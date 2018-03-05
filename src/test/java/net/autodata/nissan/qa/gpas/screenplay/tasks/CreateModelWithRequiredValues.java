@@ -1,14 +1,16 @@
 package net.autodata.nissan.qa.gpas.screenplay.tasks;
 
 import net.autodata.nissan.qa.gpas.screenplay.mappers.SubdivisionMapper;
+import net.autodata.nissan.qa.gpas.screenplay.ui.ApplicationHomePage;
+import net.autodata.nissan.qa.gpas.screenplay.ui.EditModel;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.SelectFromOptions;
-import net.serenitybdd.screenplay.waits.WaitUntil;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Step;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CreateModelWithRequiredValues implements Task {
 
@@ -18,6 +20,9 @@ public class CreateModelWithRequiredValues implements Task {
     private final String subDivisionInInt;
     private final String modelName;
     private final String modelId;
+
+    @Managed
+    EditModel editModel;
 
     public CreateModelWithRequiredValues(String country, String year, String subDivision, String modelName, String modelId) {
         this.country = country;
@@ -42,6 +47,26 @@ public class CreateModelWithRequiredValues implements Task {
                 Enter.theValue(modelName).into(ModelDetails.CREATE_MODEL_NAME),
                 Enter.theValue(modelId).into(ModelDetails.CREATE_MODEL_SEQUENCE),
                 Click.on(ModelDetails.MODEL_SUBMIT_BUTTON)
+//                Enter.theValue("29570").into(By.xpath("html/body/div[2]/div[2]/div/div[4]/div/div[3]/table/tbody/tr[2]/td[6]/table/tbody/tr[2]/td/input")),
+//                Click.on(By.xpath("html/body/div[2]/div[2]/div/div[4]/div/div[3]/table/tbody/tr[2]/td[6]/table/tbody/tr[3]/td/button"))
         );
+
+        try {
+            Thread.sleep(10000);
+            editModel.switchToEditModelWindow();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        actor.attemptsTo(
+                Click.on(EditModel.MODELACTION_LISTBOX),
+                SelectFromOptions.byValue("Close").from(EditModel.MODELACTION_LISTBOX)
+        );
+
+        try {
+            editModel.switchToParentWindow();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

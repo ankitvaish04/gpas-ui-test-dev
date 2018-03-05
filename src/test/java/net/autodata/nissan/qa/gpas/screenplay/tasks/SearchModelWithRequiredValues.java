@@ -30,7 +30,7 @@ public class SearchModelWithRequiredValues implements Task {
         actor.attemptsTo(
                 SelectFromOptions.byValue(country).from(ModelDetails.SELECT_COUNTRY),
                 SelectFromOptions.byValue(year).from(ModelDetails.SELECT_MODEL_YEAR),
-                SelectFromOptions.byValue(subDivisionInInt).from(ModelDetails.SELECT_SUBDIVISION_FROM_OPTION),
+                SelectFromOptions.byVisibleText(subDivision).from(ModelDetails.SELECT_SUBDIVISION),
                 SelectFromOptions.byVisibleText(modelName).from(ModelDetails.SELECT_MODEL_YMMID)
 
 //                SelectFromOptions.byValue(country).from(ModelDetails.SELECT_COUNTRY),
