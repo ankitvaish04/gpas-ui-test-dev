@@ -10,7 +10,7 @@ import net.autodata.nissan.qa.gpas.screenplay.questions.Model;
 import java.util.List;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
-import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 
 public class CreateModelSteps {
@@ -54,7 +54,7 @@ public class CreateModelSteps {
                         )
         );
         //Harcoded for testing purpose
-        theActorInTheSpotlight().should(seeThat(Model.displayedInList(), contains(("01 29572 Model from Serenity 1"))));
+        theActorInTheSpotlight().should(seeThat(Model.displayedInList(), containsString(("29572"))));
     }
 
 }
