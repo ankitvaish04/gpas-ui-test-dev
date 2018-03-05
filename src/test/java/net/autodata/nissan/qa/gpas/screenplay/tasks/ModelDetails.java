@@ -34,6 +34,6 @@ public class ModelDetails {
     static final Target MODEL_SUBMIT_BUTTON = Target.the("'Submit Model' field")
             .locatedBy("//table[@class='row_edit']//button[@class='rosetta-Button'][text()='Submit']");
 
-    static final Target SELECT_MODEL_YMMID = Target.the("model ymmid")
+    public static final Target SELECT_MODEL_YMMID = Target.the("model ymmid")
             .locatedBy("//select[contains(@title, 'ymmId, ModelName')]");
 }

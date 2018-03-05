@@ -1,19 +1,16 @@
 package net.autodata.nissan.qa.gpas.screenplay.features.steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.autodata.nissan.qa.gpas.screenplay.model.CreateModel;
 import net.autodata.nissan.qa.gpas.screenplay.model.ModelInformation;
 import net.autodata.nissan.qa.gpas.screenplay.model.SearchModel;
-import org.springframework.ui.Model;
-
+import net.autodata.nissan.qa.gpas.screenplay.questions.Model;
 import java.util.List;
-
-import static net.serenitybdd.screenplay.EventualConsequence.eventually;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 
 public class CreateModelSteps {
@@ -54,9 +51,10 @@ public class CreateModelSteps {
                                         .forSubdivision(modelInfo.getSubdivision())
                                         .withModelName(modelInfo.getModelName())
                                         .searchModel()
-                        ),
-                        theActorInTheSpotlight().should(seeThat(Model.displayed(), equalToIgnoringCase("ymmId")))
+                        )
         );
+        //Harcoded for testing purpose
+        theActorInTheSpotlight().should(seeThat(Model.displayedInList(), contains(("01 29572 Model from Serenity 1"))));
     }
 
 }

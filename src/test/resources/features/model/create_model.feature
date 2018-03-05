@@ -9,6 +9,6 @@ Feature: create new model
   Scenario: create a model with basic model information
     And Abad wants to create a model with basic information
       | country | modelYear | subdivision   | modelName             | modelId |
-      | CA      | 2017      | Infiniti Cars | Model from Serenity 1 | 21      |
+      | CA      | 2017      | Infiniti Cars | Model from Serenity 1 | 18     |
     When he has completed creating the model
     Then he should see the created model
