@@ -1,0 +1,14 @@
+{
+  "sqlInput": {
+    "sqlUrl": "localhost:1433",
+    "sqlUser": "sa",
+    "sqlPass": "sa123456",
+    "database": "Helios"
+  },
+  "cvsInput": {
+    "cvsHost": "192.167.99.100",
+    "cvsUser": "abad_centos",
+    "cvsIdentity": "C:\\apache-tomcat-6.0.53\\gpas\\Nissan.priv",
+    "cvsRoot": "/home/cvsroot"
+  }
+}
