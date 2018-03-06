@@ -1,0 +1,379 @@
+{
+  "CreateModel": {
+    "country_code": "US",
+    "model_year": "2017",
+    "sub_division_perm_id": "1",
+    "model_perm_id": "11",
+    "model_name": "Q50 Hybrid",
+    "sequence_num": "11",
+    "retail_fleet_status": "R"
+  },
+  "UpdateModel": {
+    "effective_date": "07/18/2017",
+    "languages": ["fr"],
+    "currencies": "CAD",
+    "currenciesToRem": "USD",
+    "priceTypes": ["Retail/MSRP"],
+    "modelLineCode": "TXT"
+  },
+  "CreateStyles": [
+    {
+      "style_id": "1",
+      "style_code": "91816",
+      "mfr_style_code": "91816",
+      "ncode": "",
+      "style_name": "AWD",
+      "trim": "Q50 S Hybrid",
+      "trim_plus": "3.5L A/T 7",
+      "version_name": "English",
+      "descriptions": [
+        {
+          "description_type_id": "1",
+          "description": "Ext Desc Description"
+        },
+        {
+          "description_type_id": "21",
+          "description": "Feature Bullet 1 Description"
+        },
+        {
+          "description_type_id": "22",
+          "description": "Feature Bullet 2 Description"
+        },
+        {
+          "description_type_id": "23",
+          "description": "Feature Bullet 3 Description"
+        }
+      ],
+      "pricing": [
+        {
+          "price_state": "Actual",
+          "model_pricing": "33730.00",
+          "effective_date": "07/18/2017",
+          "non_effective_date": ""
+        },
+        {
+          "price_state": "Actual",
+          "model_pricing": "32410.00",
+          "effective_date": "07/01/2017",
+          "non_effective_date": "07/18/2017"
+        }
+      ],
+      "styleSetName": "BSE"
+    },
+    {
+      "style_id": "2",
+      "style_code": "91817",
+      "mfr_style_code": "91817",
+      "ncode": "",
+      "version_name": "",
+      "style_name": "AWD",
+      "trim": "Q50 Sport Hybrid",
+      "trim_plus": "3.5L A/T 7",
+      "descriptions": [
+        {
+          "description_type_id": "1",
+          "description": "Ext Desc Description"
+        },
+        {
+          "description_type_id": "21",
+          "description": "Feature Bullet 1 Description"
+        },
+        {
+          "description_type_id": "22",
+          "description": "Feature Bullet 2 Description"
+        },
+        {
+          "description_type_id": "23",
+          "description": "Feature Bullet 3 Description"
+        }
+      ],
+      "pricing": [
+        {
+          "price_state": "Actual",
+          "model_pricing": "32410.00",
+          "effective_date": "07/18/2017",
+          "non_effective_date": ""
+        }
+      ],
+      "styleSetName": "SPO"
+    }
+  ],
+  "CreateEquipments": [
+    {
+      "isHeader": false,
+      "isSpecification": true,
+      "isMostPopular" : true,
+      "order_code": "I-TEST",
+      "option_kind": "70",
+      "utf": "0",
+      "flags": ["DIN"],
+      "descriptions": [
+        {
+          "description_type_id": "0",
+          "description": "Test Description"
+        }
+      ],
+      "filter_rules": []
+    },
+    {
+      "isHeader": false,
+      "isSpecification": false,
+      "isMostPopular" : true,
+      "order_code": "I-091",
+      "option_kind": "0",
+      "utf": "0",
+      "flags": ["DIN"],
+      "descriptions": [
+        {
+          "description_type_id": "0",
+          "description": "AM/FM/CD audio system with 5.8\" color touch-screen monitor"
+        }
+      ],
+      "filter_rules": []
+    },
+    {
+      "isHeader": false,
+      "isSpecification": true,
+      "isMostPopular" : true,
+      "order_code": "I-090",
+      "option_kind": "0",
+      "utf": "0",
+      "flags": ["PIN"],
+      "descriptions": [
+        {
+          "description_type_id": "20",
+          "description": "Keep tabs on your technology through Sentra’s 5” color display. Get a read out from available features like Bluetooth® streaming audio, SiriusXM® Satellite Radio, and the Hands-free text messaging assistant, front and center. [2017_SENTRA_20,2017_SENTRA_49,2017_SENTRA_101,2017_SENTRA_110]"
+        },
+        {
+          "description_type_id": "0",
+          "description": "AM/FM/CD audio system with 5.0\" color display"
+        }
+      ],
+      "filter_rules": []
+    },
+    {
+      "isHeader": true,
+      "isSpecification": false,
+      "order_code": "HDR09",
+      "option_kind": "0",
+      "utf": "0",
+      "descriptions": [
+        {
+          "description_type_id": "0",
+          "description": "Audio / Entertainment"
+        }
+      ]
+    },
+    {
+      "isHeader": false,
+      "isSpecification": false,
+      "order_code": "H01",
+      "option_kind": "0",
+      "utf": "0",
+      "descriptions": [
+        {
+          "description_type_id": "48",
+          "description": "Installation Disclaimer"
+        },
+        {
+          "description_type_id": "0",
+          "description": "Technology Package"
+        }
+      ],
+      "filter_rules": []
+    },
+    {
+      "isHeader": true,
+      "isSpecification": false,
+      "order_code": "HDR06",
+      "option_kind": "0",
+      "utf": "0",
+      "descriptions": [
+        {
+          "description_type_id": "48",
+          "description": "Installation Disclaimer - Packages"
+        },
+        {
+          "description_type_id": "47",
+          "description": "Image Disclaimer - Packages"
+        },
+        {
+          "description_type_id": "0",
+          "description": "Packages"
+        }
+      ]
+    },
+    {
+      "isHeader": false,
+      "isSpecification": false,
+      "order_code": "I-EN1",
+      "option_kind": "6",
+      "utf": "0",
+      "descriptions": [
+        {
+          "description_type_id": "48",
+          "description": "Installation Disclaimer"
+        },
+        {
+          "description_type_id": "0",
+          "description": "3.5-liter V6 with Infiniti Direct Response Hybrid®, utilizing a lithium-ion battery and 50 kW electric motor"
+        }
+      ],
+      "filter_rules": []
+    },
+    {
+      "isHeader": true,
+      "isSpecification": false,
+      "order_code": "HDR001",
+      "option_kind": "0",
+      "utf": "0",
+      "descriptions": [
+        {
+          "description_type_id": "48",
+          "description": "Installation Disclaimer - Power Engine"
+        },
+        {
+          "description_type_id": "47",
+          "description": "Image Disclaimer - Power Engine"
+        },
+        {
+          "description_type_id": "0",
+          "description": "Power - Engine"
+        }
+      ]
+    }
+  ],
+  "CreateRules": [
+    {
+      "order_code": "H01",
+      "operator": "R",
+      "operand": "R10"
+    },
+    {
+      "order_code": "I-090",
+      "operator": "R",
+      "operand": "H01"
+    }
+  ],
+  "CreatePricing": [
+    {
+      "order_code": "I-091",
+      "price_state": "Actual",
+      "retail_fleet_status": "R",
+      "condition": "",
+      "pricing": "440.00",
+      "effective_date": "07/18/2017",
+      "noneffective_date": ""
+    },
+    {
+      "order_code": "H01",
+      "price_state": "Actual",
+      "retail_fleet_status": "R",
+      "condition": "",
+      "pricing": "1,850.00",
+      "effective_date": "07/18/2017",
+      "noneffective_date": ""
+    },
+    {
+      "order_code": "I-EN1",
+      "price_state": "Actual",
+      "retail_fleet_status": "R",
+      "condition": "",
+      "pricing": "0.00",
+      "effective_date": "07/18/2017",
+      "noneffective_date": ""
+    }
+  ],
+  "CreateEIMs": [
+    {
+      "position": "18",
+      "character": "-",
+      "condition": ""
+    },
+    {
+      "position": "17",
+      "character": "B",
+      "condition": ""
+    },
+    {
+      "position": "16",
+      "character": "-",
+      "condition": ""
+    },
+    {
+      "position": "15",
+      "character": "-",
+      "condition": ""
+    },
+    {
+      "position": "14",
+      "character": "-",
+      "condition": ""
+    },
+    {
+      "position": "13",
+      "character": "A",
+      "condition": ""
+    },
+    {
+      "position": "12",
+      "character": "U",
+      "condition": ""
+    },
+    {
+      "position": "11",
+      "character": "H",
+      "condition": ""
+    },
+    {
+      "position": "8",
+      "character": "V37",
+      "condition": ""
+    },
+    {
+      "position": "7",
+      "character": "L",
+      "condition": ""
+    },
+    {
+      "position": "6",
+      "character": "V",
+      "condition": ""
+    },
+    {
+      "position": "5",
+      "character": "L",
+      "condition": ""
+    },
+    {
+      "position": "4",
+      "character": "N",
+      "condition": ""
+    },
+    {
+      "position": "2",
+      "character": "LT",
+      "condition": "I-EN1"
+    },
+    {
+      "position": "1",
+      "character": "B",
+      "condition": ""
+    }
+  ],
+  "CheckCVCs": {
+    "optionKindsToCheck": ["006"]
+  },
+  "CreateDisclaimers": [
+    {
+      "ref_code": "2",
+      "short_name": "TEST2 ®® Ⓐ € ©© ™™ ££ ¥¥ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩",
+      "description": "®® Test Disclaimer 2 Ⓐ € ©© ™™ ££ ¥¥ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩"
+    },
+    {
+      "ref_code": "1",
+      "short_name": "TEST1",
+      "description": "Test Disclaimer 1"
+    }
+  ]
+}
