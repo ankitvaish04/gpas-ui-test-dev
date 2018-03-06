@@ -7,11 +7,12 @@ import net.autodata.nissan.qa.gpas.screenplay.model.CreateModel;
 import net.autodata.nissan.qa.gpas.screenplay.model.ModelInformation;
 import net.autodata.nissan.qa.gpas.screenplay.model.SearchModel;
 import net.autodata.nissan.qa.gpas.screenplay.questions.Model;
+import net.autodata.nissan.qa.gpas.screenplay.ui.EditModel;
+
 import java.util.List;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.equalToIgnoringCase;
 
 public class CreateModelSteps {
 
@@ -53,8 +54,8 @@ public class CreateModelSteps {
                                         .searchModel()
                         )
         );
-        //Harcoded for testing purpose
-        theActorInTheSpotlight().should(seeThat(Model.displayedInList(), containsString(("29572"))));
+
+        theActorInTheSpotlight().should(seeThat(Model.displayedInList(), containsString((EditModel.ymmId))));
     }
 
 }

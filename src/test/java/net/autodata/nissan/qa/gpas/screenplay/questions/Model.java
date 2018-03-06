@@ -1,11 +1,11 @@
 package net.autodata.nissan.qa.gpas.screenplay.questions;
 
 import net.autodata.nissan.qa.gpas.screenplay.tasks.ModelDetails;
+import net.autodata.nissan.qa.gpas.screenplay.ui.EditModel;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import org.openqa.selenium.WebElement;
-import java.util.ArrayList;
 import java.util.List;
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
 
@@ -22,12 +22,11 @@ public class Model implements Question{
         String modelName = null;
         models = getDriver().findElements(By.xpath("//select[contains(@title, 'ymmId, ModelName')]/option"));
         for (int i = 0; i<models.size(); i++){
-            if(models.get(i).getText().contains("29572")){
+            if(models.get(i).getText().contains(EditModel.ymmId)){
                 modelName = models.get(i).getText();
                 System.out.println("Model Name: " + modelName);
             }
         }
-        //return Text.of(modelDetails.SELECT_MODEL_YMMID).viewedBy(actor).asString();
         return modelName;
     }
 

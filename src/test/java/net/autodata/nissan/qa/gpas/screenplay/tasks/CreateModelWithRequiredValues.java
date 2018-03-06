@@ -1,9 +1,7 @@
 package net.autodata.nissan.qa.gpas.screenplay.tasks;
 
 import net.autodata.nissan.qa.gpas.screenplay.mappers.SubdivisionMapper;
-import net.autodata.nissan.qa.gpas.screenplay.ui.ApplicationHomePage;
 import net.autodata.nissan.qa.gpas.screenplay.ui.EditModel;
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -11,6 +9,7 @@ import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Step;
+
 
 public class CreateModelWithRequiredValues implements Task {
 
@@ -54,6 +53,7 @@ public class CreateModelWithRequiredValues implements Task {
         try {
             Thread.sleep(10000);
             editModel.switchToEditModelWindow();
+            editModel.getymmId();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -64,7 +64,7 @@ public class CreateModelWithRequiredValues implements Task {
         );
 
         try {
-            editModel.switchToParentWindow();
+            editModel.switchToParentWindowAndRefresh();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
