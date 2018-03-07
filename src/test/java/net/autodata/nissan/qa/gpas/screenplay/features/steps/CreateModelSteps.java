@@ -7,7 +7,7 @@ import net.autodata.nissan.qa.gpas.screenplay.model.CreateModel;
 import net.autodata.nissan.qa.gpas.screenplay.model.ModelInformation;
 import net.autodata.nissan.qa.gpas.screenplay.model.SearchModel;
 import net.autodata.nissan.qa.gpas.screenplay.questions.Model;
-import net.autodata.nissan.qa.gpas.screenplay.ui.EditModel;
+import net.autodata.nissan.qa.gpas.screenplay.utilities.GlobalVars;
 
 import java.util.List;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
@@ -55,7 +55,7 @@ public class CreateModelSteps {
                         )
         );
 
-        theActorInTheSpotlight().should(seeThat(Model.displayedInList(), containsString((EditModel.ymmId))));
+        theActorInTheSpotlight().should(seeThat(Model.displayedInList(), containsString((GlobalVars.ymmId))));
     }
 
 }
