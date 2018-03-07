@@ -2,6 +2,9 @@ package net.autodata.nissan.qa.gpas.screenplay.tasks;
 
 import net.autodata.nissan.qa.gpas.screenplay.mappers.SubdivisionMapper;
 import net.autodata.nissan.qa.gpas.screenplay.ui.EditModel;
+import net.autodata.nissan.qa.gpas.screenplay.ui.Retrieve;
+import net.autodata.nissan.qa.gpas.screenplay.ui.SwitchToChildWindow;
+import net.autodata.nissan.qa.gpas.screenplay.ui.SwitchToParentWindow;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -9,7 +12,6 @@ import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Step;
-
 
 public class CreateModelWithRequiredValues implements Task {
 
@@ -45,28 +47,15 @@ public class CreateModelWithRequiredValues implements Task {
                 Enter.theValue(modelId).into(ModelDetails.CREATE_MODEL_PERM_ID),
                 Enter.theValue(modelName).into(ModelDetails.CREATE_MODEL_NAME),
                 Enter.theValue(modelId).into(ModelDetails.CREATE_MODEL_SEQUENCE),
-                Click.on(ModelDetails.MODEL_SUBMIT_BUTTON)
-//                Enter.theValue("29570").into(By.xpath("html/body/div[2]/div[2]/div/div[4]/div/div[3]/table/tbody/tr[2]/td[6]/table/tbody/tr[2]/td/input")),
-//                Click.on(By.xpath("html/body/div[2]/div[2]/div/div[4]/div/div[3]/table/tbody/tr[2]/td[6]/table/tbody/tr[3]/td/button"))
-        );
-
-        try {
-            Thread.sleep(10000);
-            editModel.switchToEditModelWindow();
-            editModel.getymmId();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        actor.attemptsTo(
+                Click.on(ModelDetails.MODEL_SUBMIT_BUTTON),
+//              Enter.theValue("29570").into(By.xpath("html/body/div[2]/div[2]/div/div[4]/div/div[3]/table/tbody/tr[2]/td[6]/table/tbody/tr[2]/td/input")),
+//              Click.on(By.xpath("html/body/div[2]/div[2]/div/div[4]/div/div[3]/table/tbody/tr[2]/td[6]/table/tbody/tr[3]/td/button")),
+                SwitchToChildWindow.edit(),
                 Click.on(EditModel.MODELACTION_LISTBOX),
-                SelectFromOptions.byValue("Close").from(EditModel.MODELACTION_LISTBOX)
-        );
+                Retrieve.ymmIdFromUrl(),
+                SelectFromOptions.byValue("Close").from(EditModel.MODELACTION_LISTBOX),
+                SwitchToParentWindow.parent()
 
-        try {
-            editModel.switchToParentWindowAndRefresh();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        );
     }
 }
