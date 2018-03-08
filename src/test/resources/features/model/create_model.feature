@@ -13,7 +13,9 @@ Feature: create new model
     When he has completed creating the model
     Then he should see the created model
 
-  Scenario: create new style and translate marketing description
-      And Abad wants to create a new style with style code for ymmid
-      When he has completed creating the style
-      Then he should see the created style
+  Scenario: Update a newly created model
+    And Abad wants to update a model with basic information
+      | effective_date | languages | currencies   | priceTypes  | modelLineCode | comment       |
+      | 07/18/2017     | fr        | CAD          | Retail/MSRP | TXT           | Updated Model |
+    When he has completed updating the model
+    Then he should see the updated model
