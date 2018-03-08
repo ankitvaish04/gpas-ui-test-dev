@@ -1,4 +1,4 @@
-package net.autodata.nissan.qa.gpas.screenplay.ui;
+package net.autodata.nissan.qa.gpas.screenplay.customactions;
 
 import net.autodata.nissan.qa.gpas.screenplay.utilities.GlobalVars;
 import net.serenitybdd.screenplay.Actor;
