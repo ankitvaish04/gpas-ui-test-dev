@@ -1,4 +1,4 @@
-package net.autodata.nissan.qa.gpas.screenplay.ui;
+package net.autodata.nissan.qa.gpas.screenplay.customactions;
 
 import net.autodata.nissan.qa.gpas.screenplay.utilities.GlobalVars;
 import net.serenitybdd.screenplay.Actor;
@@ -8,7 +8,7 @@ import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 /**
  * Created by ankit.vaish on 07-03-2018.
  */
-public class Retrieve implements Interaction{
+public class RetrieveYmmId implements Interaction{
 
     @Override
     public <T extends Actor> void performAs(T actor) {
@@ -19,8 +19,8 @@ public class Retrieve implements Interaction{
         System.out.println("YMMID      : " + GlobalVars.ymmId);
     }
 
-    public static Retrieve ymmIdFromUrl(){
-        return  new Retrieve();
+    public static RetrieveYmmId fromUrl(){
+        return  new RetrieveYmmId();
     }
 
 }
