@@ -7,5 +7,6 @@ public class GlobalVars {
 
     public static String PARENT_WINDOW = "";
     public static String ymmId = null;
+    public static String Model_YEAR="";
 
 }
