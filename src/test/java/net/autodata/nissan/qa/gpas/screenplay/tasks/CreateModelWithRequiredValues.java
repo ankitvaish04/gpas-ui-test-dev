@@ -2,9 +2,9 @@ package net.autodata.nissan.qa.gpas.screenplay.tasks;
 
 import net.autodata.nissan.qa.gpas.screenplay.mappers.SubdivisionMapper;
 import net.autodata.nissan.qa.gpas.screenplay.ui.EditModel;
-import net.autodata.nissan.qa.gpas.screenplay.ui.Retrieve;
-import net.autodata.nissan.qa.gpas.screenplay.ui.SwitchToChildWindow;
-import net.autodata.nissan.qa.gpas.screenplay.ui.SwitchToParentWindow;
+import net.autodata.nissan.qa.gpas.screenplay.customactions.RetrieveYmmId;
+import net.autodata.nissan.qa.gpas.screenplay.customactions.SwitchToChildWindow;
+import net.autodata.nissan.qa.gpas.screenplay.customactions.SwitchToParentWindow;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -52,7 +52,7 @@ public class CreateModelWithRequiredValues implements Task {
 //              Click.on(By.xpath("html/body/div[2]/div[2]/div/div[4]/div/div[3]/table/tbody/tr[2]/td[6]/table/tbody/tr[3]/td/button")),
                 SwitchToChildWindow.edit(),
                 Click.on(EditModel.MODELACTION_LISTBOX),
-                Retrieve.ymmIdFromUrl(),
+                RetrieveYmmId.fromUrl(),
                 SelectFromOptions.byValue("Close").from(EditModel.MODELACTION_LISTBOX),
                 SwitchToParentWindow.parent()
 
