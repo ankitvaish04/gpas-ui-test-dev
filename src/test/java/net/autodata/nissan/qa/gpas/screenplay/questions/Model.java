@@ -1,7 +1,6 @@
 package net.autodata.nissan.qa.gpas.screenplay.questions;
 
 import net.autodata.nissan.qa.gpas.screenplay.tasks.ModelDetails;
-import net.autodata.nissan.qa.gpas.screenplay.ui.EditModel;
 import net.autodata.nissan.qa.gpas.screenplay.utilities.GlobalVars;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.screenplay.Actor;

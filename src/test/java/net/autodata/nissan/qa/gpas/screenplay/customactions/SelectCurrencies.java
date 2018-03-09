@@ -1,6 +1,6 @@
 package net.autodata.nissan.qa.gpas.screenplay.customactions;
 
-import net.autodata.nissan.qa.gpas.screenplay.ui.EditModel;
+import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.actions.Click;
@@ -20,8 +20,8 @@ public class SelectCurrencies implements Interaction{
             for (String currency : currencyList) {
                 if (!currency.equalsIgnoreCase("")) {
                     theActorInTheSpotlight().attemptsTo(
-                            SelectFromOptions.byValue(currency).from(EditModel.DIALOGBOX_AVAIABLE_LIST_TARGET("Select & Order Currencies")),
-                            Click.on(EditModel.BUTTON_TARGET("> Button", ">"))
+                            SelectFromOptions.byValue(currency).from(EditModelPage.DIALOGBOX_AVAIABLE_LIST_TARGET("Select & Order Currencies")),
+                            Click.on(EditModelPage.BUTTON_TARGET("> Button", ">"))
                     );
                 }
             }

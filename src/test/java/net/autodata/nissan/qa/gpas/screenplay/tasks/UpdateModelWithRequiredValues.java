@@ -2,7 +2,7 @@ package net.autodata.nissan.qa.gpas.screenplay.tasks;
 
 import net.autodata.nissan.qa.gpas.screenplay.customactions.*;
 import net.autodata.nissan.qa.gpas.screenplay.ui.ApplicationHomePage;
-import net.autodata.nissan.qa.gpas.screenplay.ui.EditModel;
+import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.autodata.nissan.qa.gpas.screenplay.utilities.GlobalVars;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -39,16 +39,16 @@ public class UpdateModelWithRequiredValues implements Task {
                 Click.on(ApplicationHomePage.BUTTON_TARGET("Edit Button","Edit")),
                 SwitchToChildWindow.edit(),
                 RetrieveModelYear.fromHeader(),
-                DoubleClick.on(EditModel.MODEL_NAME),
-                Enter.theValue(effectivedate).into(EditModel.INPUT_BOX_TARGET("Effective Date","Effective Date")),
-                Enter.theValue(modelLineCode).into(EditModel.INPUT_BOX_TARGET("Model Line Code","Model Line Code")),
-                Enter.theValue(comment).into(EditModel.INPUT_BOX_TARGET("Comment","Comment")),
-                Click.on(EditModel.INPUT_BOX_TARGET("Languages", "Languages")),
+                DoubleClick.on(EditModelPage.MODEL_NAME),
+                Enter.theValue(effectivedate).into(EditModelPage.INPUT_BOX_TARGET("Effective Date","Effective Date")),
+                Enter.theValue(modelLineCode).into(EditModelPage.INPUT_BOX_TARGET("Model Line Code","Model Line Code")),
+                Enter.theValue(comment).into(EditModelPage.INPUT_BOX_TARGET("Comment","Comment")),
+                Click.on(EditModelPage.INPUT_BOX_TARGET("Languages", "Languages")),
                 SelectLanguages.byValue(languages),
-                Click.on(EditModel.BUTTON_TARGET("OK Button","OK")),
-                Click.on(EditModel.INPUT_BOX_TARGET("Currencies","Currencies")),
+                Click.on(EditModelPage.BUTTON_TARGET("OK Button","OK")),
+                Click.on(EditModelPage.INPUT_BOX_TARGET("Currencies","Currencies")),
                 SelectCurrencies.byValue(currencies),
-                Click.on(EditModel.BUTTON_TARGET("OK Button","OK"))
+                Click.on(EditModelPage.BUTTON_TARGET("OK Button","OK"))
 
                 );
     }

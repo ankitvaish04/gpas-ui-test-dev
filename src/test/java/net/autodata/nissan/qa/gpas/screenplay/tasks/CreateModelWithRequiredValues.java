@@ -1,7 +1,7 @@
 package net.autodata.nissan.qa.gpas.screenplay.tasks;
 
 import net.autodata.nissan.qa.gpas.screenplay.mappers.SubdivisionMapper;
-import net.autodata.nissan.qa.gpas.screenplay.ui.EditModel;
+import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.autodata.nissan.qa.gpas.screenplay.customactions.RetrieveYmmId;
 import net.autodata.nissan.qa.gpas.screenplay.customactions.SwitchToChildWindow;
 import net.autodata.nissan.qa.gpas.screenplay.customactions.SwitchToParentWindow;
@@ -23,7 +23,7 @@ public class CreateModelWithRequiredValues implements Task {
     private final String modelId;
 
     @Managed
-    EditModel editModel;
+    EditModelPage editModel;
 
     public CreateModelWithRequiredValues(String country, String year, String subDivision, String modelName, String modelId) {
         this.country = country;
@@ -51,9 +51,9 @@ public class CreateModelWithRequiredValues implements Task {
 //              Enter.theValue(GlobalVars.ymmId).into(ApplicationHomePage.INPUT_BOX_TARGET("ymmID","Enter Year Make Model Id")),
 //              Click.on(ApplicationHomePage.BUTTON_TARGET("Edit Button","Edit")),
                 SwitchToChildWindow.edit(),
-                Click.on(EditModel.MODELACTION_LISTBOX),
+                Click.on(EditModelPage.MODELACTION_LISTBOX),
                 RetrieveYmmId.fromUrl(),
-                SelectFromOptions.byValue("Close").from(EditModel.MODELACTION_LISTBOX),
+                SelectFromOptions.byValue("Close").from(EditModelPage.MODELACTION_LISTBOX),
                 SwitchToParentWindow.parent()
 
         );

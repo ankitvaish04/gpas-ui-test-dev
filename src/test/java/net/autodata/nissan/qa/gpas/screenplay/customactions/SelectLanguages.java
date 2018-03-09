@@ -1,6 +1,6 @@
 package net.autodata.nissan.qa.gpas.screenplay.customactions;
 
-import net.autodata.nissan.qa.gpas.screenplay.ui.EditModel;
+import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.actions.Click;
@@ -20,8 +20,8 @@ public class SelectLanguages implements Interaction{
             for (String language : languagesList) {
                 if (!language.equalsIgnoreCase("")) {
                     theActorInTheSpotlight().attemptsTo(
-                            SelectFromOptions.byValue(language).from(EditModel.DIALOGBOX_AVAIABLE_LIST_TARGET("Select & Order Languages")),
-                            Click.on(EditModel.BUTTON_TARGET("> Button", ">"))
+                            SelectFromOptions.byValue(language).from(EditModelPage.DIALOGBOX_AVAIABLE_LIST_TARGET("Select & Order Languages")),
+                            Click.on(EditModelPage.BUTTON_TARGET("> Button", ">"))
                     );
                 }
             }
