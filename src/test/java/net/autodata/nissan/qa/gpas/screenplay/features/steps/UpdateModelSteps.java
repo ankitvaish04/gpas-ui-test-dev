@@ -29,6 +29,7 @@ public class UpdateModelSteps {
                                         .andCurrencies(modelInfo.getCurrencies())
                                         .andPriceTypes(modelInfo.getPriceTypes())
                                         .andModelLineCode(modelInfo.getModelLineCode())
+                                        .andComment(modelInfo.getComment())
                                         .updateModel()
                         )
         );

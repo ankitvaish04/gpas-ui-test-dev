@@ -12,6 +12,7 @@ public class UpdateModelBuilder {
     //private final String currenciesToRem;
     private String priceTypes;
     private String modelLineCode;
+    private String comment;
 
     public UpdateModelBuilder withEffectiveDate(String effectivedate) {
         this.effectivedate = effectivedate;
@@ -38,8 +39,13 @@ public class UpdateModelBuilder {
         return this;
     }
 
+    public UpdateModelBuilder andComment(String comment) {
+        this.comment = comment;
+        return this;
+    }
+
     public Performable updateModel() {
         return Instrumented.instanceOf(UpdateModelWithRequiredValues.class)
-                .withProperties(effectivedate, languages, currencies, priceTypes, modelLineCode);
+                .withProperties(effectivedate, languages, currencies, priceTypes, modelLineCode, comment);
     }
 }
