@@ -31,12 +31,6 @@ public class SearchModelWithRequiredValues implements Task {
                 SelectFromOptions.byValue(country).from(ModelDetails.SELECT_COUNTRY),
                 SelectFromOptions.byValue(year).from(ModelDetails.SELECT_MODEL_YEAR),
                 SelectFromOptions.byVisibleText(subDivision).from(ModelDetails.SELECT_SUBDIVISION)
-                //SelectFromOptions.byVisibleText(modelName).from(ModelDetails.SELECT_MODEL_YMMID)
-
-//                SelectFromOptions.byValue(country).from(ModelDetails.SELECT_COUNTRY),
-//                SelectFromOptions.byValue(year).from(ModelDetails.SELECT_MODEL_YEAR),
-//                SelectFromOptions.byVisibleText(subDivision).from(ModelDetails.SELECT_SUBDIVISION),
-//                Click.on(ModelDetails.CREATE_MODEL_BUTTON)
         );
     }
 }

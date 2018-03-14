@@ -36,4 +36,10 @@ public class ModelDetails {
 
     public static final Target SELECT_MODEL_YMMID = Target.the("model ymmid")
             .locatedBy("//select[contains(@title, 'ymmId, ModelName')]");
+
+    public static final Target MODEL_NAME(String targetElementName , String modelPermId)
+    {
+        return  Target.the(targetElementName)
+                .locatedBy("//select[contains(@title, 'ModelName')]/option[contains(text(),'"+modelPermId+"')]");
+    }
 }

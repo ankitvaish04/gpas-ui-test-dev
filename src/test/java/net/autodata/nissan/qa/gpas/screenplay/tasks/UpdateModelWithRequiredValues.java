@@ -3,7 +3,6 @@ package net.autodata.nissan.qa.gpas.screenplay.tasks;
 import net.autodata.nissan.qa.gpas.screenplay.customactions.*;
 import net.autodata.nissan.qa.gpas.screenplay.ui.ApplicationHomePage;
 import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
-import net.autodata.nissan.qa.gpas.screenplay.utilities.GlobalVars;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -13,36 +12,56 @@ import net.thucydides.core.annotations.Step;
 
 public class UpdateModelWithRequiredValues implements Task {
 
-    private final String effectivedate;
+    private final String effectiveDate;
     private final String languages;
     private final String currencies;
-    //private final String currenciesToRem;
     private final String priceTypes;
+    private final String modelKind;
     private final String modelLineCode;
+    private final String program;
+    private final String commercialKind;
+    private final String clientType;
+    private final String phase;
     private final String comment;
-    private final String ymmID = GlobalVars.ymmId;
+    private final String tarrif;
+    private final String modelName;
 
-    public UpdateModelWithRequiredValues(String effectivedate, String languages, String currencies, String priceTypes, String modelLineCode, String comment) {
-        this.effectivedate = effectivedate;
+
+    public UpdateModelWithRequiredValues(String effectiveDate, String languages, String currencies, String priceTypes, String modelKind, String modelLineCode, String program, String commercialKind, String clientType, String phase, String comment, String tarrif, String modelName) {
+        this.effectiveDate = effectiveDate;
         this.languages = languages;
         this.currencies = currencies;
         this.priceTypes = priceTypes;
+        this.modelKind = modelKind;
         this.modelLineCode = modelLineCode;
+        this.program = program;
+        this.commercialKind = commercialKind;
+        this.clientType = clientType;
+        this.phase = phase;
         this.comment = comment;
+        this.tarrif = tarrif;
+        this.modelName = modelName;
     }
 
     @Override
-    @Step("{0} looks to update a model with Effective Date as #effectivedate, Languages #languages, Currencies #currencies and Price Types #priceTypes for #ymmId and translate model information")
+    @Step("{0} looks to update a model with Effective Date as #effectiveDate, Languages #languages, Currencies #currencies and Price Types #priceTypes for #ymmId and translate model information")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Enter.theValue(GlobalVars.ymmId).into(ApplicationHomePage.INPUT_BOX_TARGET("ymmID","Enter Year Make Model Id")),
+                //Enter.theValue(GlobalVars.ymmId).into(ApplicationHomePage.INPUT_BOX_TARGET("ymmID","Enter Year Make ModelList Id")),
                 Click.on(ApplicationHomePage.BUTTON_TARGET("Edit Button","Edit")),
                 SwitchToChildWindow.edit(),
                 RetrieveModelYear.fromHeader(),
-                DoubleClick.on(EditModelPage.MODEL_NAME),
-                Enter.theValue(effectivedate).into(EditModelPage.INPUT_BOX_TARGET("Effective Date","Effective Date")),
+                DoubleClick.on(EditModelPage.MODEL_NAME_HEADER),
+                Enter.theValue(effectiveDate).into(EditModelPage.INPUT_BOX_TARGET("Effective Date","Effective Date")),
+                Enter.theValue(modelKind).into(EditModelPage.INPUT_BOX_TARGET("Model Kind", "Model Kind")),
                 Enter.theValue(modelLineCode).into(EditModelPage.INPUT_BOX_TARGET("Model Line Code","Model Line Code")),
+                Enter.theValue(program).into(EditModelPage.INPUT_BOX_TARGET("Program","Program")),
+                Enter.theValue(commercialKind).into(EditModelPage.INPUT_BOX_TARGET("Commercial Kind","Commercial Kind")),
+                Enter.theValue(clientType).into(EditModelPage.INPUT_BOX_TARGET("Client Type","Client Type")),
+                Enter.theValue(phase).into(EditModelPage.INPUT_BOX_TARGET("Phase","Phase")),
                 Enter.theValue(comment).into(EditModelPage.INPUT_BOX_TARGET("Comment","Comment")),
+                Enter.theValue(tarrif).into(EditModelPage.INPUT_BOX_TARGET("Tarrif","Tarrif")),
+                Enter.theValue(modelName).into(EditModelPage.INPUT_BOX_TARGET("","")),
                 Click.on(EditModelPage.INPUT_BOX_TARGET("Languages", "Languages")),
                 SelectLanguages.byValue(languages),
                 Click.on(EditModelPage.BUTTON_TARGET("OK Button","OK")),

@@ -9,6 +9,7 @@ import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class UpdateModelSteps {
 
+    private List<ModelInformation> modelInformationList;
     private List<UpdateModelInformation> updateModelInformationList;
 
     @And("^(?:.*) to update a model with basic information$")
@@ -49,7 +50,7 @@ public class UpdateModelSteps {
                         )
         );
 
-        theActorInTheSpotlight().should(seeThat(Model.displayedInList(), containsString((GlobalVars.ymmId)))); */
+        theActorInTheSpotlight().should(seeThat(ModelList.displays(), containsString((GlobalVars.ymmId)))); */
     }
 
 }
