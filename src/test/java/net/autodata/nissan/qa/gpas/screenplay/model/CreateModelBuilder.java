@@ -10,7 +10,7 @@ public class CreateModelBuilder {
     private String year;
     private String subDivision;
     private String modelName;
-    private String modelId;
+    private String modelPermId;
 
     public CreateModelBuilder onCountry(String country) {
         this.country = country;
@@ -33,12 +33,12 @@ public class CreateModelBuilder {
     }
 
     public CreateModelBuilder andModelId(String modelId) {
-        this.modelId = modelId;
+        this.modelPermId = modelId;
         return this;
     }
 
     public Performable createNewModel() {
         return Instrumented.instanceOf(CreateModelWithRequiredValues.class)
-                .withProperties(country, year, subDivision, modelName, modelId);
+                .withProperties(country, year, subDivision, modelName, modelPermId);
     }
 }
