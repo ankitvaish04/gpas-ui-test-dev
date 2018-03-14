@@ -9,6 +9,6 @@ public class ModelInformation {
     private final String modelYear;
     private final String subdivision;
     private final String modelName;
-    private final String modelId;
+    private final String modelPermId;
 
 }
