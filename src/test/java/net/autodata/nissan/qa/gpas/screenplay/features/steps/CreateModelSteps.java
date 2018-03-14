@@ -6,17 +6,17 @@ import cucumber.api.java.en.When;
 import net.autodata.nissan.qa.gpas.screenplay.model.CreateModel;
 import net.autodata.nissan.qa.gpas.screenplay.model.ModelInformation;
 import net.autodata.nissan.qa.gpas.screenplay.model.SearchModel;
-import net.autodata.nissan.qa.gpas.screenplay.questions.Model;
-import net.autodata.nissan.qa.gpas.screenplay.utilities.GlobalVars;
-
+import net.autodata.nissan.qa.gpas.screenplay.questions.ModelList;
 import java.util.List;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
-import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.CoreMatchers.hasItem;
+
 
 public class CreateModelSteps {
 
     private List<ModelInformation> modelInformationList;
+    private String created_model = "";
 
     @And("^(?:.*) wants to create a model with basic information$")
     public void create_new_model(List<ModelInformation> modelInformationRequest) throws Throwable {
@@ -35,7 +35,7 @@ public class CreateModelSteps {
                                         .andYear(modelInfo.getModelYear())
                                         .forSubdivision(modelInfo.getSubdivision())
                                         .withModelName(modelInfo.getModelName())
-                                        .andModelId(modelInfo.getModelId())
+                                        .andModelId(modelInfo.getModelPermId())
                                         .createNewModel()
                         )
         );
@@ -45,17 +45,23 @@ public class CreateModelSteps {
     public void verify_created_model() throws Throwable {
         modelInformationList.forEach(
                 modelInfo ->
-                        theActorInTheSpotlight().attemptsTo(
-                                SearchModel.searchModelYmmId()
-                                        .onCountry(modelInfo.getCountry())
-                                        .andYear(modelInfo.getModelYear())
-                                        .forSubdivision(modelInfo.getSubdivision())
-                                        .withModelName(modelInfo.getModelName())
-                                        .searchModel()
-                        )
-        );
+                {
+                    theActorInTheSpotlight().attemptsTo(
+                            SearchModel.searchModelYmmId()
+                                    .onCountry(modelInfo.getCountry())
+                                    .andYear(modelInfo.getModelYear())
+                                    .forSubdivision(modelInfo.getSubdivision())
+                                    .withModelName(modelInfo.getModelName())
+                                    .searchModel()
+                    );
 
-        theActorInTheSpotlight().should(seeThat(Model.displayedInList(), containsString((GlobalVars.ymmId))));
+                    created_model= modelInfo.getModelPermId() + " " + modelInfo.getModelName() + " {" + modelInfo.getModelPermId() + "}";
+                    theActorInTheSpotlight().should(
+                            seeThat(ModelList.displayed(modelInformationList), hasItem(created_model))
+                    );
+                }
+
+        );
     }
 
 }
