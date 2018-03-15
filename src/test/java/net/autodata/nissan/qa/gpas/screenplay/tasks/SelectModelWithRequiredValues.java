@@ -1,6 +1,5 @@
 package net.autodata.nissan.qa.gpas.screenplay.tasks;
 
-import net.autodata.nissan.qa.gpas.screenplay.mappers.SubdivisionMapper;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -29,8 +28,7 @@ public class SelectModelWithRequiredValues implements Task {
                 SelectFromOptions.byValue(country).from(ModelDetails.SELECT_COUNTRY),
                 SelectFromOptions.byValue(year).from(ModelDetails.SELECT_MODEL_YEAR),
                 SelectFromOptions.byVisibleText(subDivision).from(ModelDetails.SELECT_SUBDIVISION),
-                Click.on(ModelDetails.MODEL_NAME("Model Name",modelPermId))
-
+                Click.on(ModelDetails.MODEL_NAME("Model Name", modelPermId))
         );
     }
 }

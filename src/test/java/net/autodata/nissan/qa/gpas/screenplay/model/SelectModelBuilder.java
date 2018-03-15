@@ -1,6 +1,5 @@
 package net.autodata.nissan.qa.gpas.screenplay.model;
 
-import net.autodata.nissan.qa.gpas.screenplay.tasks.SearchModelWithRequiredValues;
 import net.autodata.nissan.qa.gpas.screenplay.tasks.SelectModelWithRequiredValues;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Performable;
@@ -32,8 +31,6 @@ public class SelectModelBuilder {
     }
     public Performable selectModel() {
         return Instrumented.instanceOf(SelectModelWithRequiredValues.class)
-                .withProperties(country, year, subDivision,modelPermID);
+                .withProperties(country, year, subDivision, modelPermID);
     }
-
-
 }

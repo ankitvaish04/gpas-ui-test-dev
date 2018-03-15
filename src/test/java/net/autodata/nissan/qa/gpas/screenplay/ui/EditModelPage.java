@@ -12,8 +12,11 @@ public class EditModelPage extends PageObject{
     public static final Target MODELACTION_LISTBOX = Target.the("'Action' dropdown")
             .locatedBy("//select[@class='gwt-ListBox']");
 
-    public static final Target MODEL_NAME = Target.the("Model Name")
+    public static final Target MODEL_NAME_HEADER = Target.the("Model Name")
             .locatedBy("//tr[@class='rTool-row row_selected']/td[6]");
+    
+    public static final Target MODEL_NAME = Target.the("'Model Name' input box")
+            .locatedBy("(//input[@class=\"gwt-TextBox\"])[last()]");
 
     public static final Target INPUT_BOX_TARGET(String targetElementName , String title)
     {

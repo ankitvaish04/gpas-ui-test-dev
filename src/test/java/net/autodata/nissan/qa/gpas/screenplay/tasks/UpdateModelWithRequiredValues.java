@@ -47,7 +47,6 @@ public class UpdateModelWithRequiredValues implements Task {
     @Step("{0} looks to update a model with Effective Date as #effectiveDate, Languages #languages, Currencies #currencies and Price Types #priceTypes for #ymmId and translate model information")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                //Enter.theValue(GlobalVars.ymmId).into(ApplicationHomePage.INPUT_BOX_TARGET("ymmID","Enter Year Make ModelList Id")),
                 Click.on(ApplicationHomePage.BUTTON_TARGET("Edit Button","Edit")),
                 SwitchToChildWindow.edit(),
                 RetrieveModelYear.fromHeader(),
@@ -61,13 +60,14 @@ public class UpdateModelWithRequiredValues implements Task {
                 Enter.theValue(phase).into(EditModelPage.INPUT_BOX_TARGET("Phase","Phase")),
                 Enter.theValue(comment).into(EditModelPage.INPUT_BOX_TARGET("Comment","Comment")),
                 Enter.theValue(tarrif).into(EditModelPage.INPUT_BOX_TARGET("Tarrif","Tarrif")),
-                Enter.theValue(modelName).into(EditModelPage.INPUT_BOX_TARGET("","")),
+                Enter.theValue(modelName).into(EditModelPage.MODEL_NAME),
                 Click.on(EditModelPage.INPUT_BOX_TARGET("Languages", "Languages")),
                 SelectLanguages.byValue(languages),
                 Click.on(EditModelPage.BUTTON_TARGET("OK Button","OK")),
                 Click.on(EditModelPage.INPUT_BOX_TARGET("Currencies","Currencies")),
                 SelectCurrencies.byValue(currencies),
-                Click.on(EditModelPage.BUTTON_TARGET("OK Button","OK"))
+                Click.on(EditModelPage.BUTTON_TARGET("OK Button","OK")),
+                Click.on(EditModelPage.BUTTON_TARGET("Submit Button","Submit"))
 
                 );
     }
