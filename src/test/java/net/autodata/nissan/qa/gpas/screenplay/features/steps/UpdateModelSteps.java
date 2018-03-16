@@ -2,10 +2,11 @@ package net.autodata.nissan.qa.gpas.screenplay.features.steps;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.autodata.nissan.qa.gpas.screenplay.customactions.CommitModelData;
+import net.autodata.nissan.qa.gpas.screenplay.customactions.CloseEditModelWindow;
 import net.autodata.nissan.qa.gpas.screenplay.model.*;
 import net.autodata.nissan.qa.gpas.screenplay.questions.UpdatedModelInfo;
 import java.util.List;
-import java.util.Map;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.Matchers.*;
@@ -13,7 +14,6 @@ import static org.hamcrest.Matchers.*;
 public class UpdateModelSteps {
 
     private List<UpdateModelInformation> updateModelInformationList;
-    List<Map<String,String>> data=null;
 
     @When("^(?:.*) to update a model with basic information$")
     public void update_new_model(List<UpdateModelInformation> updateModelInformationRequest) throws Exception {
@@ -45,19 +45,20 @@ public class UpdateModelSteps {
     public void verify_updated_model() throws Throwable {
         updateModelInformationList.forEach(
                 modelInfo -> {
-                    theActorInTheSpotlight().should(
-                            seeThat(UpdatedModelInfo.field("Model Name"), is(modelInfo.getModelName())),
-                            seeThat(UpdatedModelInfo.field("Model Name"), is(modelInfo.getModelName())),
-                            seeThat(UpdatedModelInfo.field("EffDate"), is(modelInfo.getEffectiveDate())),
-                            seeThat(UpdatedModelInfo.field("MdlKnd"), is(modelInfo.getModelKind())),
-                            seeThat(UpdatedModelInfo.field("Tarrif"), is(modelInfo.getTarrif())),
-                            seeThat(UpdatedModelInfo.field("Comments"), is(modelInfo.getComment())),
-                            seeThat(UpdatedModelInfo.field("Phase"), is(modelInfo.getPhase())),
-                            seeThat(UpdatedModelInfo.field("CommKind"), is(modelInfo.getCommercialKind())),
-                            seeThat(UpdatedModelInfo.field("ClientType"), is(modelInfo.getClientType()))
-                    );
-
+                    theActorInTheSpotlight().should(seeThat(UpdatedModelInfo.field("Model Name"), is(modelInfo.getModelName())));
+                    theActorInTheSpotlight().should(seeThat(UpdatedModelInfo.field("Program"), is(modelInfo.getProgram())));
+                    theActorInTheSpotlight().should(seeThat(UpdatedModelInfo.field("EffDate"), is(modelInfo.getEffectiveDate())));
+                    theActorInTheSpotlight().should(seeThat(UpdatedModelInfo.field("MdlKnd"), is(modelInfo.getModelKind())));
+                    theActorInTheSpotlight().should(seeThat(UpdatedModelInfo.field("Tarrif"), is(modelInfo.getTarrif())));
+                    theActorInTheSpotlight().should(seeThat(UpdatedModelInfo.field("Comments"), is(modelInfo.getComment())));
+                    theActorInTheSpotlight().should(seeThat(UpdatedModelInfo.field("Phase"), is(modelInfo.getPhase())));
+                    theActorInTheSpotlight().should(seeThat(UpdatedModelInfo.field("CommKind"), is(modelInfo.getCommercialKind())));
+                    theActorInTheSpotlight().should(seeThat(UpdatedModelInfo.field("ClientType"), is(modelInfo.getClientType())));
                   }
                 );
+
+        theActorInTheSpotlight().attemptsTo(CommitModelData.commit());
+        theActorInTheSpotlight().attemptsTo(CloseEditModelWindow.close());
+
     }
 }

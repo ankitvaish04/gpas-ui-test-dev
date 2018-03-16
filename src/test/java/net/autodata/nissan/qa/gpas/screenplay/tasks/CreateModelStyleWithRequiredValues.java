@@ -1,9 +1,10 @@
 package net.autodata.nissan.qa.gpas.screenplay.tasks;
 
-import net.autodata.nissan.qa.gpas.screenplay.mappers.SubdivisionMapper;
-import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
+import net.autodata.nissan.qa.gpas.screenplay.customactions.RightClick;
 import net.autodata.nissan.qa.gpas.screenplay.customactions.SwitchToChildWindow;
 import net.autodata.nissan.qa.gpas.screenplay.customactions.SwitchToParentWindow;
+import net.autodata.nissan.qa.gpas.screenplay.mappers.SubdivisionMapper;
+import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -11,32 +12,42 @@ import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.thucydides.core.annotations.Step;
 
-public class CreateModelWithRequiredValues implements Task {
+public class CreateModelStyleWithRequiredValues implements Task {
 
-    private final String country;
-    private final String year;
-    private final String subDivision;
-    private final String subDivisionInInt;
-    private final String modelName;
-    private final String modelPermId;
+    private final String styleID;
+    private final String styleCode;
+    private final String mfrStyleCode;
+    private final String nCode;
+    private final String styleName;
+    private final String trim;
+    private final String trimPlus;
+    private final String versionName;
+    private final String styleSetName;
 
 
-    public CreateModelWithRequiredValues(String country, String year, String subDivision, String modelName, String modelPermId) {
-        this.country = country;
-        this.year = year;
-        this.subDivision = subDivision;
-        this.modelName = modelName;
-        this.modelPermId = modelPermId;
-        this.subDivisionInInt = SubdivisionMapper.subdivisionMapper.valueOf(
-                subDivision.replaceAll("[ |/]", "_").toUpperCase()
-        ).toString();
+    public CreateModelStyleWithRequiredValues(String styleID,String styleCode,String mfrStyleCode,String nCode,String styleName,String trim,String trimPlus,String versionName,String styleSetName) {
+        this.styleID = styleID;
+        this.styleCode = styleCode;
+        this.mfrStyleCode = mfrStyleCode;
+        this.nCode = nCode;
+        this.styleName = styleName;
+        this.trim = trim;
+        this.trimPlus = trimPlus;
+        this.versionName = versionName;
+        this.styleSetName = styleSetName;
+
     }
 
     @Override
-    @Step("{0} looks to create a model on #country and #year for #subDivision")
+    @Step("{0} looks to create a model style")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
 
+                Click.on(EditModelPage.TABS_TARGET("Mdl Tab", "Style")),
+                RightClick.on(EditModelPage.STYLE_TABLE_ROW),
+                Click.on(EditModelPage.INSERT_NEW_RECORD)
+
+/*
                 SelectFromOptions.byValue(country).from(ModelDetails.SELECT_COUNTRY),
                 Click.on(ModelDetails.CREATE_MODEL_BUTTON),
                 SelectFromOptions.byValue(year).from(ModelDetails.SELECT_MODEL_YEAR_FROM_OPTION),
@@ -49,6 +60,7 @@ public class CreateModelWithRequiredValues implements Task {
                 Click.on(EditModelPage.MODELACTION_LISTBOX),
                 SelectFromOptions.byValue("Close").from(EditModelPage.MODELACTION_LISTBOX),
                 SwitchToParentWindow.parent()
+*/
 
         );
     }
