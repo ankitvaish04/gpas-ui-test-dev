@@ -21,9 +21,6 @@ public class EditModelPage extends PageObject{
     public static final Target STYLE_TABLE_ROW = Target.the("'Style Table'")
             .locatedBy("//div[@role='tabpanel']/div[2]/div/div/table/tfoot/tr/td");
 
-    public static final Target INSERT_NEW_RECORD = Target.the("'Style Table'")
-            .locatedBy("//*[@id='gwt-uid-385']");
-
 
     public static final Target INPUT_BOX_TARGET(String targetElementName , String title)
     {
@@ -48,6 +45,13 @@ public class EditModelPage extends PageObject{
         return  Target.the(targetElementName)
                 .locatedBy("//div[@class='gwt-HTML' and text()='"+ title +" '] ");
     }
+
+    public static final Target STYLE_MENU_OPTION(String title)
+    {
+        return Target.the(title)
+                .locatedBy("//td[@role='menuitem' and text()='"+ title +"']");
+    }
+
 
 }
 

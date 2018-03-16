@@ -2,8 +2,7 @@ package net.autodata.nissan.qa.gpas.screenplay.tasks;
 
 import net.autodata.nissan.qa.gpas.screenplay.customactions.RightClick;
 import net.autodata.nissan.qa.gpas.screenplay.customactions.SwitchToChildWindow;
-import net.autodata.nissan.qa.gpas.screenplay.customactions.SwitchToParentWindow;
-import net.autodata.nissan.qa.gpas.screenplay.mappers.SubdivisionMapper;
+import net.autodata.nissan.qa.gpas.screenplay.ui.ApplicationHomePage;
 import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -11,6 +10,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.thucydides.core.annotations.Step;
+
 
 public class CreateModelStyleWithRequiredValues implements Task {
 
@@ -43,9 +43,11 @@ public class CreateModelStyleWithRequiredValues implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
 
-                Click.on(EditModelPage.TABS_TARGET("Mdl Tab", "Style")),
+                Click.on(ApplicationHomePage.BUTTON_TARGET("Edit Button","Edit")),
+                SwitchToChildWindow.edit(),
+                Click.on(EditModelPage.TABS_TARGET("Style Tab", "Style")),
                 RightClick.on(EditModelPage.STYLE_TABLE_ROW),
-                Click.on(EditModelPage.INSERT_NEW_RECORD)
+                Click.on(EditModelPage.STYLE_MENU_OPTION("Insert New Record"))
 
 /*
                 SelectFromOptions.byValue(country).from(ModelDetails.SELECT_COUNTRY),
