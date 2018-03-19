@@ -18,8 +18,42 @@ public class EditModelPage extends PageObject{
     public static final Target MODEL_NAME = Target.the("'Model Name' input box")
             .locatedBy("(//input[@class=\"gwt-TextBox\"])[last()]");
 
-    public static final Target STYLE_TABLE_ROW = Target.the("'Style Table'")
+    public static final Target STYLE_TABLE = Target.the("'Style Table'")
             .locatedBy("//div[@role='tabpanel']/div[2]/div/div/table/tfoot/tr/td");
+
+    public static final Target TRANSLATE_BUTTON_EN = Target.the("'Translate Button(En)'")
+            .locatedBy("(//button[@lng='en' and text()='Translate'])[last()]");
+
+    public static final Target MARKETING_DESCRIPTIONS_TABLE = Target.the("'Marketing Descriptions Table'")
+            .locatedBy("(//table[@class='r-border']/tbody/tr[2]/td/table/tfoot/tr/td)[1]");
+
+    public static final Target MARKETING_DESCRIPTIONS_ROW1 = Target.the("'Marketing Descriptions Table Row#1'")
+            .locatedBy("(//table[@class='r-border'])[last()-1]/tbody/tr[2]/td/table/tbody/tr[1]");
+
+    public static final Target MARKETING_DESCRIPTIONS_TYPE = Target.the("'Marketing Description Type' dropdown")
+            .locatedBy("(//select[@class='gwt-ListBox'])[last()]");
+
+    public static final Target MARKETING_DESCRIPTION_TEXT = Target.the("'Marketing Description Text'")
+            .locatedBy("(//textarea[@title='Description'])[1]");
+
+    public static final Target PRICING_TABLE_ROW1 = Target.the("'Pricing Table Row#1'")
+            .locatedBy("(//table[@class='r-border'])[last()]/tbody/tr[2]/td/table/tbody/tr[1]");
+
+    public static final Target PRICE_STATE = Target.the("'Pricing State Dropdown'")
+            .locatedBy("(//select[@class='gwt-ListBox'])[last()]");
+
+    public static final Target PRICE_USD = Target.the("'Retail/MSRP(USD)'")
+            .locatedBy("(//input[@class='gwt-TextBox rosetta-numeric'])[last()-1]");
+
+    public static final Target PRICE_CAD = Target.the("'Retail/MSRP(CAD)'")
+            .locatedBy("(//input[@class='gwt-TextBox rosetta-numeric'])[last()]");
+
+    public static final Target EFFECTIVE_DATE = Target.the("'Effective Date'")
+            .locatedBy("//input[@class='gwt-TextBox rosetta-numeric bad_data' and @name='Effective Date']");
+
+    public static final Target NON_EFFECTIVE_DATE = Target.the("'Non-Effective Date'")
+            .locatedBy("//input[@class='gwt-TextBox rosetta-numeric bad_data' and @name='Non-Effective Date']");
+
 
 
     public static final Target INPUT_BOX_TARGET(String targetElementName , String title)
@@ -37,7 +71,7 @@ public class EditModelPage extends PageObject{
     public static final Target BUTTON_TARGET(String targetElementName , String title)
     {
         return  Target.the(targetElementName)
-                .locatedBy("//button[text()='"+ title +"']");
+                .locatedBy("(//button[text()='"+ title +"'])[last()]");
     }
 
     public static final Target TABS_TARGET(String targetElementName , String title)

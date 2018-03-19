@@ -1,8 +1,6 @@
 package net.autodata.nissan.qa.gpas.screenplay.tasks;
 
 import net.autodata.nissan.qa.gpas.screenplay.customactions.RightClick;
-import net.autodata.nissan.qa.gpas.screenplay.customactions.SwitchToChildWindow;
-import net.autodata.nissan.qa.gpas.screenplay.ui.ApplicationHomePage;
 import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -10,6 +8,9 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.thucydides.core.annotations.Step;
+
+import static net.autodata.nissan.qa.gpas.screenplay.features.steps.CreateModelStyleSteps.createMarketingDescriptionsInformationList;
+import static net.autodata.nissan.qa.gpas.screenplay.features.steps.CreateModelStyleSteps.createModelStyleInformationList;
 
 
 public class CreateModelStyleWithRequiredValues implements Task {
@@ -23,6 +24,8 @@ public class CreateModelStyleWithRequiredValues implements Task {
     private final String trimPlus;
     private final String versionName;
     private final String styleSetName;
+
+    public static boolean flag = true;
 
 
     public CreateModelStyleWithRequiredValues(String styleID,String styleCode,String mfrStyleCode,String nCode,String styleName,String trim,String trimPlus,String versionName,String styleSetName) {
@@ -41,29 +44,23 @@ public class CreateModelStyleWithRequiredValues implements Task {
     @Override
     @Step("{0} looks to create a model style")
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(
 
-                Click.on(ApplicationHomePage.BUTTON_TARGET("Edit Button","Edit")),
-                SwitchToChildWindow.edit(),
-                Click.on(EditModelPage.TABS_TARGET("Style Tab", "Style")),
-                RightClick.on(EditModelPage.STYLE_TABLE_ROW),
-                Click.on(EditModelPage.STYLE_MENU_OPTION("Insert New Record"))
+            actor.attemptsTo(
 
-/*
-                SelectFromOptions.byValue(country).from(ModelDetails.SELECT_COUNTRY),
-                Click.on(ModelDetails.CREATE_MODEL_BUTTON),
-                SelectFromOptions.byValue(year).from(ModelDetails.SELECT_MODEL_YEAR_FROM_OPTION),
-                SelectFromOptions.byValue(subDivisionInInt).from(ModelDetails.SELECT_SUBDIVISION_FROM_OPTION),
-                Enter.theValue(modelPermId).into(ModelDetails.CREATE_MODEL_PERM_ID),
-                Enter.theValue(modelName).into(ModelDetails.CREATE_MODEL_NAME),
-                Enter.theValue(modelPermId).into(ModelDetails.CREATE_MODEL_SEQUENCE),
-                Click.on(ModelDetails.MODEL_SUBMIT_BUTTON),
-                SwitchToChildWindow.edit(),
-                Click.on(EditModelPage.MODELACTION_LISTBOX),
-                SelectFromOptions.byValue("Close").from(EditModelPage.MODELACTION_LISTBOX),
-                SwitchToParentWindow.parent()
-*/
+                    RightClick.on(EditModelPage.STYLE_TABLE),
+                    Click.on(EditModelPage.STYLE_MENU_OPTION("Insert New Record")),
+                    Enter.theValue(styleID).into(EditModelPage.INPUT_BOX_TARGET("pStyle Id", "StylePermId")),
+                    Enter.theValue(styleCode).into(EditModelPage.INPUT_BOX_TARGET("Style Code", "Style Code")),
+                    Enter.theValue(mfrStyleCode).into(EditModelPage.INPUT_BOX_TARGET("Mfr Style Code", "Mfr Style Code")),
+                    Enter.theValue(nCode).into(EditModelPage.INPUT_BOX_TARGET("NCode", "NCode")),
+                    Enter.theValue(styleName).into(EditModelPage.INPUT_BOX_TARGET("Style Name", "Style Name")),
+                    Enter.theValue(trim).into(EditModelPage.INPUT_BOX_TARGET("Trim", "Trim")),
+                    Enter.theValue(trimPlus).into(EditModelPage.INPUT_BOX_TARGET("Trim Plus", "Trim Plus")),
+                    Enter.theValue(versionName).into(EditModelPage.INPUT_BOX_TARGET("Version Name", "Version Name")),
+                    Click.on(EditModelPage.TRANSLATE_BUTTON_EN)
 
-        );
+            );
+
     }
+
 }
