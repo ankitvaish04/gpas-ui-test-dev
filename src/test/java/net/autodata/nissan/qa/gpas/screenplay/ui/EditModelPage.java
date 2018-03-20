@@ -21,11 +21,14 @@ public class EditModelPage extends PageObject{
     public static final Target STYLE_TABLE = Target.the("'Style Table'")
             .locatedBy("//div[@role='tabpanel']/div[2]/div/div/table/tfoot/tr/td");
 
+    public static final Target STYLE_TABLE_ROW1 = Target.the("'Style Table'")
+            .locatedBy("//div[@role='tabpanel']/div[2]/div/div/table/tbody/tr[1]");
+
     public static final Target TRANSLATE_BUTTON_EN = Target.the("'Translate Button(En)'")
             .locatedBy("(//button[@lng='en' and text()='Translate'])[last()]");
 
     public static final Target MARKETING_DESCRIPTIONS_TABLE = Target.the("'Marketing Descriptions Table'")
-            .locatedBy("(//table[@class='r-border']/tbody/tr[2]/td/table/tfoot/tr/td)[1]");
+            .locatedBy("(//table[@class='r-border'])[last()-1]/tbody/tr[2]/td/table");
 
     public static final Target MARKETING_DESCRIPTIONS_ROW1 = Target.the("'Marketing Descriptions Table Row#1'")
             .locatedBy("(//table[@class='r-border'])[last()-1]/tbody/tr[2]/td/table/tbody/tr[1]");
@@ -35,6 +38,9 @@ public class EditModelPage extends PageObject{
 
     public static final Target MARKETING_DESCRIPTION_TEXT = Target.the("'Marketing Description Text'")
             .locatedBy("(//textarea[@title='Description'])[1]");
+
+    public static final Target PRICING_TABLE = Target.the("'Pricing Table Row#1'")
+            .locatedBy("(//table[@class='r-border'])[last()]/tbody/tr[2]/td/table");
 
     public static final Target PRICING_TABLE_ROW1 = Target.the("'Pricing Table Row#1'")
             .locatedBy("(//table[@class='r-border'])[last()]/tbody/tr[2]/td/table/tbody/tr[1]");

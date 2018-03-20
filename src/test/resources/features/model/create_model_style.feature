@@ -1,3 +1,4 @@
+@CreateStyle
 Feature: create style information for a model
 
   Background:

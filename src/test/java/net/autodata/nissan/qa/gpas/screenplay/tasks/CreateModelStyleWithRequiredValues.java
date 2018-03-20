@@ -6,11 +6,9 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.thucydides.core.annotations.Step;
-
-import static net.autodata.nissan.qa.gpas.screenplay.features.steps.CreateModelStyleSteps.createMarketingDescriptionsInformationList;
-import static net.autodata.nissan.qa.gpas.screenplay.features.steps.CreateModelStyleSteps.createModelStyleInformationList;
+import org.openqa.selenium.By;
+import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
 
 
 public class CreateModelStyleWithRequiredValues implements Task {
@@ -24,8 +22,6 @@ public class CreateModelStyleWithRequiredValues implements Task {
     private final String trimPlus;
     private final String versionName;
     private final String styleSetName;
-
-    public static boolean flag = true;
 
 
     public CreateModelStyleWithRequiredValues(String styleID,String styleCode,String mfrStyleCode,String nCode,String styleName,String trim,String trimPlus,String versionName,String styleSetName) {
@@ -45,9 +41,13 @@ public class CreateModelStyleWithRequiredValues implements Task {
     @Step("{0} looks to create a model style")
     public <T extends Actor> void performAs(T actor) {
 
+        if(getDriver().findElements(By.xpath("//div[@role='tabpanel']/div[2]/div/div/table/tbody/tr")).size()==0)
+            actor.attemptsTo(RightClick.on(EditModelPage.STYLE_TABLE));
+        else
+            actor.attemptsTo(RightClick.on(EditModelPage.STYLE_TABLE_ROW1));
+
             actor.attemptsTo(
 
-                    RightClick.on(EditModelPage.STYLE_TABLE),
                     Click.on(EditModelPage.STYLE_MENU_OPTION("Insert New Record")),
                     Enter.theValue(styleID).into(EditModelPage.INPUT_BOX_TARGET("pStyle Id", "StylePermId")),
                     Enter.theValue(styleCode).into(EditModelPage.INPUT_BOX_TARGET("Style Code", "Style Code")),
@@ -60,7 +60,6 @@ public class CreateModelStyleWithRequiredValues implements Task {
                     Click.on(EditModelPage.TRANSLATE_BUTTON_EN)
 
             );
-
     }
 
 }

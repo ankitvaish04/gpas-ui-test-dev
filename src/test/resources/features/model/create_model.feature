@@ -1,3 +1,4 @@
+@CreateModel
 Feature: create new model
 
   In order to create the model versions, equipments, pricing, eim and disclaimers for a model
@@ -8,7 +9,7 @@ Feature: create new model
 
   Scenario: create a model with basic model information
     And Abad wants to create a model with basic information
-      | country | modelYear | subdivision   | modelName             | modelPermId |
-      | CA      | 2017      | Infiniti Cars | Model from Serenity 1 | 13          |
+     | country | modelYear | subdivision   | modelName             | modelPermId |
+     | CA      | 2017      | Infiniti Cars | Model from Serenity 1 | 15          |
     When he has completed creating the model
     Then he should see the created model

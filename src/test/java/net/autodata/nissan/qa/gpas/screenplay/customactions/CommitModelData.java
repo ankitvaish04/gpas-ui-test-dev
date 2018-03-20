@@ -14,7 +14,7 @@ public class CommitModelData implements Interaction{
 
         theActorInTheSpotlight().attemptsTo(
                 Click.on(EditModelPage.MODELACTION_LISTBOX),
-                SelectFromOptions.byValue("Commit").from(EditModelPage.MODELACTION_LISTBOX)
+                SelectFromOptions.byVisibleText("Commit").from(EditModelPage.MODELACTION_LISTBOX)
         );
         try {
             Thread.sleep(6000);
@@ -24,6 +24,8 @@ public class CommitModelData implements Interaction{
 
         theActorInTheSpotlight().attemptsTo(ClickOkOn.commitAlerts());
         theActorInTheSpotlight().attemptsTo(ClickOkOn.commitAlerts());
+        theActorInTheSpotlight().attemptsTo(ClickOkOn.commitAlerts());
+
     }
 
 
