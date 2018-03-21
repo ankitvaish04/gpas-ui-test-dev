@@ -1,11 +1,10 @@
 package net.autodata.nissan.qa.gpas.screenplay.model;
 
-import net.autodata.nissan.qa.gpas.screenplay.tasks.CreateModelEquipmentsWithRequiredValues;
-import net.autodata.nissan.qa.gpas.screenplay.tasks.CreateModelStyleWithRequiredValues;
+import net.autodata.nissan.qa.gpas.screenplay.tasks.CreateModelEquipmentWithRequiredValues;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Performable;
 
-public class CreateModelEquipmentsBuilder {
+public class CreateModelEquipmentBuilder {
 
     private String isHeader;
     private String isSpec;
@@ -16,49 +15,49 @@ public class CreateModelEquipmentsBuilder {
     private String flags;
     private String filterRules;
 
-    public CreateModelEquipmentsBuilder withHeader(String isHeader) {
+    public CreateModelEquipmentBuilder withHeader(String isHeader) {
         this.isHeader = isHeader;
         return this;
     }
 
-    public CreateModelEquipmentsBuilder andSpec(String isSpec) {
+    public CreateModelEquipmentBuilder andSpec(String isSpec) {
         this.isSpec = isSpec;
         return this;
     }
 
-    public CreateModelEquipmentsBuilder andMostPopular(String isMostPopular) {
+    public CreateModelEquipmentBuilder andMostPopular(String isMostPopular) {
         this.isMostPopular = isMostPopular;
         return this;
     }
 
-    public CreateModelEquipmentsBuilder andOrderCode(String orderCode) {
+    public CreateModelEquipmentBuilder andOrderCode(String orderCode) {
         this.orderCode = orderCode;
         return this;
     }
 
-    public CreateModelEquipmentsBuilder andOptionKind(String optionKind) {
+    public CreateModelEquipmentBuilder andOptionKind(String optionKind) {
         this.optionKind = optionKind;
         return this;
     }
 
-    public CreateModelEquipmentsBuilder andUtf(String utf) {
+    public CreateModelEquipmentBuilder andUtf(String utf) {
         this.utf = utf;
         return this;
     }
 
-    public CreateModelEquipmentsBuilder andFlags(String flags) {
+    public CreateModelEquipmentBuilder andFlags(String flags) {
         this.flags = flags;
         return this;
     }
 
-    public CreateModelEquipmentsBuilder andFilterRules(String filterRules) {
+    public CreateModelEquipmentBuilder andFilterRules(String filterRules) {
         this.filterRules = filterRules;
         return this;
     }
 
 
-    public Performable CreateModelEquipmentsBuilder() {
-        return Instrumented.instanceOf(CreateModelEquipmentsWithRequiredValues.class)
+    public Performable createModelEquipments() {
+        return Instrumented.instanceOf(CreateModelEquipmentWithRequiredValues.class)
                 .withProperties(isHeader,isSpec,isMostPopular,orderCode,optionKind,utf,flags,filterRules);
     }
 }

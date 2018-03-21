@@ -21,8 +21,17 @@ public class EditModelPage extends PageObject{
     public static final Target STYLE_TABLE = Target.the("'Style Table'")
             .locatedBy("//div[@role='tabpanel']/div[2]/div/div/table/tfoot/tr/td");
 
-    public static final Target STYLE_TABLE_ROW1 = Target.the("'Style Table'")
+    public static final Target STYLE_TABLE_ROW1 = Target.the("'Style Table Row#1'")
             .locatedBy("//div[@role='tabpanel']/div[2]/div/div/table/tbody/tr[1]");
+
+    public static final Target EQUIP_TABLE = Target.the("'Equip Table'")
+            .locatedBy("//div[@role='tabpanel']/div[3]/div/div/table/tfoot/tr/td");
+
+    public static final Target EQUIP_TABLE_ROW1 = Target.the("'Equip Table Row#1'")
+            .locatedBy("//div[@role='tabpanel']/div[3]/div/div/table/tbody/tr[2]");
+
+    public static final Target MAKE_HEADER_BUTTON = Target.the("'Make Header Button'")
+            .locatedBy("//td[@class='row_edit']/table/tbody/tr/td/table/tbody/tr/td[6]/button");
 
     public static final Target TRANSLATE_BUTTON_EN = Target.the("'Translate Button(En)'")
             .locatedBy("(//button[@lng='en' and text()='Translate'])[last()]");
@@ -60,7 +69,11 @@ public class EditModelPage extends PageObject{
     public static final Target NON_EFFECTIVE_DATE = Target.the("'Non-Effective Date'")
             .locatedBy("//input[@class='gwt-TextBox rosetta-numeric bad_data' and @name='Non-Effective Date']");
 
+    public static final Target EQUIPMENT_DESCRIPTIONS_TABLE = Target.the("'Marketing Descriptions Table'")
+            .locatedBy("(//table[@class='r-border'])[last()]/tbody/tr[2]/td/table");
 
+    public static final Target EQUIPMENT_DESCRIPTIONS_ROW1 = Target.the("'Marketing Descriptions Table Row#1'")
+            .locatedBy("(//table[@class='r-border'])[last()]/tbody/tr[2]/td/table/tbody/tr[1]");
 
     public static final Target INPUT_BOX_TARGET(String targetElementName , String title)
     {
@@ -92,6 +105,17 @@ public class EditModelPage extends PageObject{
                 .locatedBy("//td[@role='menuitem' and text()='"+ title +"']");
     }
 
+    public static final Target CHECKBOX_TARGET(String title)
+    {
+        return Target.the(title)
+                .locatedBy("//span[@title='"+ title +"']/input");
+    }
+
+    public static final Target EQUIP_FLAG(String title)
+    {
+        return Target.the(title)
+                .locatedBy("//input[@value='"+ title +"']");
+    }
 
 }
 

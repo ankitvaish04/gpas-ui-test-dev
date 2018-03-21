@@ -20,7 +20,7 @@ public class CreateEquipDescriptionsBuilder {
     }
 
 
-    public Performable CreateEquipDescriptionsBuilder() {
+    public Performable createEquipDescriptions() {
         return Instrumented.instanceOf(CreateEquipDescriptionsWithRequiredValues.class)
                 .withProperties(descriptionType,description);
     }
