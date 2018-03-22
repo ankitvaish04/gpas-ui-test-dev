@@ -16,7 +16,7 @@ public class EditModelPage extends PageObject{
             .locatedBy("//tr[@class='rTool-row row_selected']/td[6]");
     
     public static final Target MODEL_NAME = Target.the("'Model Name' input box")
-            .locatedBy("(//input[@class=\"gwt-TextBox\"])[last()]");
+            .locatedBy("(//input[@class='gwt-TextBox'])[last()]");
 
     public static final Target STYLE_TABLE = Target.the("'Style Table'")
             .locatedBy("//div[@role='tabpanel']/div[2]/div/div/table/tfoot/tr/td");
@@ -29,6 +29,18 @@ public class EditModelPage extends PageObject{
 
     public static final Target EQUIP_TABLE_ROW1 = Target.the("'Equip Table Row#1'")
             .locatedBy("//div[@role='tabpanel']/div[3]/div/div/table/tbody/tr[2]");
+
+    public static final Target RULE_TABLE = Target.the("'Rule Table'")
+            .locatedBy("//div[@role='tabpanel']/div[4]/div/div/table/tfoot/tr/td");
+
+    public static final Target RULE_TABLE_ROW1 = Target.the("'Rule Table Row#1'")
+            .locatedBy("//div[@role='tabpanel']/div[4]/div/div/table/tbody/tr[1]");
+
+    public static final Target PRICE_TABLE = Target.the("'Price Table'")
+            .locatedBy("//div[@role='tabpanel']/div[5]/div/div/table/tfoot/tr/td");
+
+    public static final Target PRICE_TABLE_ROW1 = Target.the("'Price Table Row#1'")
+            .locatedBy("//div[@role='tabpanel']/div[5]/div/div/table/tbody/tr[1]");
 
     public static final Target MAKE_HEADER_BUTTON = Target.the("'Make Header Button'")
             .locatedBy("//td[@class='row_edit']/table/tbody/tr/td/table/tbody/tr/td[6]/button");
@@ -75,10 +87,16 @@ public class EditModelPage extends PageObject{
     public static final Target EQUIPMENT_DESCRIPTIONS_ROW1 = Target.the("'Marketing Descriptions Table Row#1'")
             .locatedBy("(//table[@class='r-border'])[last()]/tbody/tr[2]/td/table/tbody/tr[1]");
 
-    public static final Target INPUT_BOX_TARGET(String targetElementName , String title)
+    public static final Target INPUT_BOX_TITLED(String targetElementName , String title)
     {
         return  Target.the(targetElementName)
                 .locatedBy("//input[@title='"+ title +"']");
+    }
+
+    public static final Target INPUT_BOX_NAMED(String targetElementName , String name)
+    {
+        return  Target.the(targetElementName)
+                .locatedBy("//input[@name='"+ name +"']");
     }
 
     public static final Target DIALOGBOX_AVAIABLE_LIST_TARGET(String targetElementName)

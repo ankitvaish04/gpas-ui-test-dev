@@ -5,17 +5,13 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.autodata.nissan.qa.gpas.screenplay.customactions.CloseEditModelWindow;
 import net.autodata.nissan.qa.gpas.screenplay.customactions.CommitModelData;
-import net.autodata.nissan.qa.gpas.screenplay.customactions.RightClick;
 import net.autodata.nissan.qa.gpas.screenplay.customactions.SwitchToChildWindow;
 import net.autodata.nissan.qa.gpas.screenplay.model.*;
 import net.autodata.nissan.qa.gpas.screenplay.questions.CreatedModelStyleInfo;
-import net.autodata.nissan.qa.gpas.screenplay.questions.UpdatedModelInfo;
 import net.autodata.nissan.qa.gpas.screenplay.ui.ApplicationHomePage;
 import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.serenitybdd.screenplay.actions.Click;
-
 import java.util.List;
-import java.util.Map;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.Matchers.is;
@@ -23,8 +19,8 @@ import static org.hamcrest.Matchers.is;
 public class CreateModelStyleSteps {
 
     public static List<CreateModelStyleInformation> createModelStyleInformationList;
-    public static List<CreateMarketingDescriptionsInformation> createMarketingDescriptionsInformationList;
-    public static List<CreatePricingInformation> createPricingInformationList;
+    public static List<CreateModelStyleMarketingDescriptionsInformation> createMarketingDescriptionsInformationList;
+    public static List<CreateModelStylePricingInformation> createPricingInformationList;
 
     @When("^(?:.*) to create a model style with basic information$")
     public void create_new_style(List<CreateModelStyleInformation> createModelStyleInformationRequest) throws Exception {
@@ -54,13 +50,13 @@ public class CreateModelStyleSteps {
     }
 
     @And("^(?:.*) wants to create marketing descriptions for the model$")
-    public void create_marketing_descriptions(List<CreateMarketingDescriptionsInformation> createMarketingDescriptionsInformationRequest) throws Throwable {
+    public void create_marketing_descriptions(List<CreateModelStyleMarketingDescriptionsInformation> createMarketingDescriptionsInformationRequest) throws Throwable {
 
         createMarketingDescriptionsInformationList = createMarketingDescriptionsInformationRequest;
         createMarketingDescriptionsInformationList.forEach(
                 marketingDescInfo ->
                         theActorInTheSpotlight().attemptsTo(
-                                CreateMarketingDescriptions.withInformation()
+                                CreateModelStyleMarketingDescriptions.withInformation()
                                         .withDescriptionTypeId(marketingDescInfo.getDescriptionType())
                                         .andDescription(marketingDescInfo.getDescription())
                                         .createMarketingDescriptions()
@@ -70,14 +66,14 @@ public class CreateModelStyleSteps {
     }
 
     @And("^(?:.*) creates pricing data for the model$")
-    public void create_pricing(List<CreatePricingInformation> createPricingInformationRequest) throws Throwable {
+    public void create_pricing(List<CreateModelStylePricingInformation> createPricingInformationRequest) throws Throwable {
 
         createPricingInformationList = createPricingInformationRequest;
         System.out.println("Pricing Data : " + createPricingInformationList);
         createPricingInformationList.forEach(
                 pricingInfo ->
                         theActorInTheSpotlight().attemptsTo(
-                                CreatePricing.withInformation()
+                                CreateModelStylePricing.withInformation()
                                         .withPriceState(pricingInfo.getPriceState())
                                         .andModelPricing(pricingInfo.getModelPricing())
                                         .withEffectiveDate(pricingInfo.getEffectiveDate())

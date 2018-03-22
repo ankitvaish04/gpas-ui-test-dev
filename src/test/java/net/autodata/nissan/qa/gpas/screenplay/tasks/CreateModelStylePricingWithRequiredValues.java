@@ -12,14 +12,14 @@ import org.openqa.selenium.By;
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
 
 
-public class CreatePricingWithRequiredValues implements Task {
+public class CreateModelStylePricingWithRequiredValues implements Task {
 
     private final String priceState;
     private final String modelPricing;
     private final String effectiveDate;
     private final String nonEffectiveDate;
 
-    public CreatePricingWithRequiredValues(String priceState, String modelPricing, String effectiveDate, String nonEffectiveDate) {
+    public CreateModelStylePricingWithRequiredValues(String priceState, String modelPricing, String effectiveDate, String nonEffectiveDate) {
         this.priceState = priceState;
         this.modelPricing = modelPricing;
         this.effectiveDate = effectiveDate;

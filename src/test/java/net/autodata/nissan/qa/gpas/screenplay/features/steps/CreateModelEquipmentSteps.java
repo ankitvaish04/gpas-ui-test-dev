@@ -20,7 +20,7 @@ import static org.hamcrest.Matchers.is;
 public class CreateModelEquipmentSteps {
 
     public static List<CreateModelEquipmentInformation> createModelEquipmentInformationList;
-    public static List<CreateEquipDescriptionsInformation> createEquipDescriptionsInformationList;
+    public static List<CreateModelEquipDescriptionsInformation> createEquipDescriptionsInformationList;
 
     @When("^(?:.*) to create equipments with basic information$")
     public void create_new_equipment(List<CreateModelEquipmentInformation> createModelEquipmentInformationRequest) throws Exception {
@@ -49,13 +49,13 @@ public class CreateModelEquipmentSteps {
     }
 
     @And("^(?:.*) wants to create equipment descriptions for the model$")
-    public void create_eqiup_descriptions(List<CreateEquipDescriptionsInformation> createEquipDescriptionsInformationRequest) throws Throwable {
+    public void create_eqiup_descriptions(List<CreateModelEquipDescriptionsInformation> createEquipDescriptionsInformationRequest) throws Throwable {
 
         createEquipDescriptionsInformationList = createEquipDescriptionsInformationRequest;
         createEquipDescriptionsInformationList.forEach(
                 equipDescInfo ->
                         theActorInTheSpotlight().attemptsTo(
-                                CreateEquipDescriptions.withInformation()
+                                CreateModelEquipDescriptions.withInformation()
                                         .withDescriptionType(equipDescInfo.getDescriptionType())
                                         .andDescription(equipDescInfo.getDescription())
                                         .createEquipDescriptions()

@@ -9,17 +9,16 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.thucydides.core.annotations.Step;
-
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
 
 
-public class CreateEquipDescriptionsWithRequiredValues implements Task {
+public class CreateModelEquipDescriptionsWithRequiredValues implements Task {
 
     private final String descriptionType;
     private final String description;
 
 
-    public CreateEquipDescriptionsWithRequiredValues(String descriptionType, String description) {
+    public CreateModelEquipDescriptionsWithRequiredValues(String descriptionType, String description) {
         this.descriptionType = descriptionType;
         this.description = description;
     }

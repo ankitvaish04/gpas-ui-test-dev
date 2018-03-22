@@ -12,12 +12,12 @@ import org.openqa.selenium.By;
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
 
 
-public class CreateMarketingDescriptionsWithRequiredValues implements Task {
+public class CreateModelStyleMarketingDescriptionsWithRequiredValues implements Task {
 
     private final String descriptionType;
     private final String description;
 
-    public CreateMarketingDescriptionsWithRequiredValues(String descriptionType, String description) {
+    public CreateModelStyleMarketingDescriptionsWithRequiredValues(String descriptionType, String description) {
         this.descriptionType = descriptionType;
         this.description = description;
     }

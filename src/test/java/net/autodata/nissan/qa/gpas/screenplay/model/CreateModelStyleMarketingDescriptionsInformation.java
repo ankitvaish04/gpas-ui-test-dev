@@ -3,7 +3,7 @@ package net.autodata.nissan.qa.gpas.screenplay.model;
 import lombok.Value;
 
 @Value
-public class CreateEquipDescriptionsInformation {
+public class CreateModelStyleMarketingDescriptionsInformation {
 
     private final String descriptionType;
     private final String description;

@@ -54,16 +54,16 @@ public class CreateModelEquipmentWithRequiredValues implements Task {
 
         if (isHeader.equalsIgnoreCase("Y")){
             actor.attemptsTo(Click.on(EditModelPage.MAKE_HEADER_BUTTON));
-            actor.attemptsTo(Enter.theValue(orderCode).into(EditModelPage.INPUT_BOX_TARGET("OrderCode", "Order Code")));
+            actor.attemptsTo(Enter.theValue(orderCode).into(EditModelPage.INPUT_BOX_TITLED("OrderCode", "Order Code")));
             if(isSpec.equalsIgnoreCase("Y"))
                 actor.attemptsTo(Click.on(EditModelPage.CHECKBOX_TARGET("Is Specification")));
         }
         else {
             actor.attemptsTo(
-                    Enter.theValue(orderCode).into(EditModelPage.INPUT_BOX_TARGET("OrderCode", "Order Code")),
-                    Enter.theValue(optionKind).into(EditModelPage.INPUT_BOX_TARGET("UTF", "OptionKind")),
-                    Enter.theValue(utf).into(EditModelPage.INPUT_BOX_TARGET("UTF", "UTF")),
-                    Click.on(EditModelPage.INPUT_BOX_TARGET("Flags", "Flags"))
+                    Enter.theValue(orderCode).into(EditModelPage.INPUT_BOX_TITLED("OrderCode", "Order Code")),
+                    Enter.theValue(optionKind).into(EditModelPage.INPUT_BOX_TITLED("UTF", "OptionKind")),
+                    Enter.theValue(utf).into(EditModelPage.INPUT_BOX_TITLED("UTF", "UTF")),
+                    Click.on(EditModelPage.INPUT_BOX_TITLED("Flags", "Flags"))
             );
 
             String[] equipFlags = flags.split(",");

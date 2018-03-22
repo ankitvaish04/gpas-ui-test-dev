@@ -49,14 +49,14 @@ public class CreateModelStyleWithRequiredValues implements Task {
             actor.attemptsTo(
 
                     Click.on(EditModelPage.STYLE_MENU_OPTION("Insert New Record")),
-                    Enter.theValue(styleID).into(EditModelPage.INPUT_BOX_TARGET("pStyle Id", "StylePermId")),
-                    Enter.theValue(styleCode).into(EditModelPage.INPUT_BOX_TARGET("Style Code", "Style Code")),
-                    Enter.theValue(mfrStyleCode).into(EditModelPage.INPUT_BOX_TARGET("Mfr Style Code", "Mfr Style Code")),
-                    Enter.theValue(nCode).into(EditModelPage.INPUT_BOX_TARGET("NCode", "NCode")),
-                    Enter.theValue(styleName).into(EditModelPage.INPUT_BOX_TARGET("Style Name", "Style Name")),
-                    Enter.theValue(trim).into(EditModelPage.INPUT_BOX_TARGET("Trim", "Trim")),
-                    Enter.theValue(trimPlus).into(EditModelPage.INPUT_BOX_TARGET("Trim Plus", "Trim Plus")),
-                    Enter.theValue(versionName).into(EditModelPage.INPUT_BOX_TARGET("Version Name", "Version Name")),
+                    Enter.theValue(styleID).into(EditModelPage.INPUT_BOX_TITLED("pStyle Id", "StylePermId")),
+                    Enter.theValue(styleCode).into(EditModelPage.INPUT_BOX_TITLED("Style Code", "Style Code")),
+                    Enter.theValue(mfrStyleCode).into(EditModelPage.INPUT_BOX_TITLED("Mfr Style Code", "Mfr Style Code")),
+                    Enter.theValue(nCode).into(EditModelPage.INPUT_BOX_TITLED("NCode", "NCode")),
+                    Enter.theValue(styleName).into(EditModelPage.INPUT_BOX_TITLED("Style Name", "Style Name")),
+                    Enter.theValue(trim).into(EditModelPage.INPUT_BOX_TITLED("Trim", "Trim")),
+                    Enter.theValue(trimPlus).into(EditModelPage.INPUT_BOX_TITLED("Trim Plus", "Trim Plus")),
+                    Enter.theValue(versionName).into(EditModelPage.INPUT_BOX_TITLED("Version Name", "Version Name")),
                     Click.on(EditModelPage.TRANSLATE_BUTTON_EN)
 
             );

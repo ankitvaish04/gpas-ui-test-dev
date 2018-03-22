@@ -1,27 +1,27 @@
 package net.autodata.nissan.qa.gpas.screenplay.model;
 
-import net.autodata.nissan.qa.gpas.screenplay.tasks.CreateEquipDescriptionsWithRequiredValues;
+import net.autodata.nissan.qa.gpas.screenplay.tasks.CreateModelEquipDescriptionsWithRequiredValues;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Performable;
 
-public class CreateEquipDescriptionsBuilder {
+public class CreateModelEquipDescriptionsBuilder {
 
     private String descriptionType;
     private String description;
 
-    public CreateEquipDescriptionsBuilder withDescriptionType(String descriptionType) {
+    public CreateModelEquipDescriptionsBuilder withDescriptionType(String descriptionType) {
         this.descriptionType = descriptionType;
         return this;
     }
 
-    public CreateEquipDescriptionsBuilder andDescription(String description) {
+    public CreateModelEquipDescriptionsBuilder andDescription(String description) {
         this.description = description;
         return this;
     }
 
 
     public Performable createEquipDescriptions() {
-        return Instrumented.instanceOf(CreateEquipDescriptionsWithRequiredValues.class)
+        return Instrumented.instanceOf(CreateModelEquipDescriptionsWithRequiredValues.class)
                 .withProperties(descriptionType,description);
     }
 }
