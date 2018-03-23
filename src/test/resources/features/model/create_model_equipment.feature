@@ -61,3 +61,41 @@ Feature: create equipment information for a model
       | PON                      | Technology Package |
 
     Then he should see the created equipments for the model
+
+  Scenario: create the equipments with descriptions
+    When Abad wants to create equipments with basic information
+      | isHeader | isSpec | isMostPopular | orderCode | optionKind | utf | flags    | filterRules |
+      | Y        |        |               | HDR06     | 0          | 0   | PIN      |             |
+
+    And he wants to create equipment descriptions for the model
+      | descriptionType          | description      |
+      | Installation Disclaimer  | Installation Disclaimer - Packages |
+      | Image Disclaimer         | Image Disclaimer - Packages |
+      | PON                      | Packages |
+
+    Then he should see the created equipments for the model
+
+  Scenario: create the equipments with descriptions
+    When Abad wants to create equipments with basic information
+      | isHeader | isSpec | isMostPopular | orderCode | optionKind | utf | flags    | filterRules |
+      | N        |        |               | I-EN1     | 6          | 0   | PIN      |             |
+
+    And he wants to create equipment descriptions for the model
+      | descriptionType          | description      |
+      | Installation Disclaimer  | Installation Disclaimer |
+      | PON                      | 3.5-liter V6 with Infiniti Direct Response Hybrid®, utilizing a lithium-ion battery and 50 kW electric motor |
+
+    Then he should see the created equipments for the model
+
+  Scenario: create the equipments with descriptions
+    When Abad wants to create equipments with basic information
+      | isHeader | isSpec | isMostPopular | orderCode | optionKind | utf | flags    | filterRules |
+      | Y        |        |               | HDR001    | 0          | 0   | PIN      |             |
+
+    And he wants to create equipment descriptions for the model
+      | descriptionType          | description      |
+      | Installation Disclaimer  | Installation Disclaimer - Power Engine |
+      | Image Disclaimer         | Image Disclaimer - Power Engine |
+      | PON                      | Power - Engine |
+
+    Then he should see the created equipments for the model

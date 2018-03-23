@@ -10,23 +10,23 @@ import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver
 /**
  * Created by ankit.vaish on 05-03-2018.
  */
-public class CreatedModelRulesInfo implements Question{
+public class CreatedModelEIMInfo implements Question{
 
-    private int rulesInfoHeaderIndex;
+    private int EIMInfoHeaderIndex;
     private static String columnName = "";
     private static String columnValue = "";
     private static int rowNum = 0;
 
     @Override
     public Object answeredBy(Actor actor) {
-        rulesInfoHeaderIndex = getElementIndex(columnName);
-        columnValue= getDriver().findElement(By.xpath("//div[@role='tabpanel']/div[4]/div/div/table/tbody/tr["+rowNum+"]/td["+rulesInfoHeaderIndex+"]")).getText().trim();
+        EIMInfoHeaderIndex = getElementIndex(columnName);
+        columnValue= getDriver().findElement(By.xpath("//div[@role='tabpanel']/div[6]/div/div/table/tbody/tr["+rowNum+"]/td["+EIMInfoHeaderIndex+"]")).getText().trim();
         return columnValue;
     }
 
     private int getElementIndex(String columnName) {
         int count=1;
-        List<WebElement> list = getDriver().findElements(By.xpath("//div[@class='rTool-row']/table[4]/tbody/tr/td"));
+        List<WebElement> list = getDriver().findElements(By.xpath("//div[@class='rTool-row']/table[6]/tbody/tr/td"));
         for(WebElement el:list)
         {
             if(el.getText().equalsIgnoreCase(columnName))
@@ -36,9 +36,9 @@ public class CreatedModelRulesInfo implements Question{
         return count;
     }
 
-    public static CreatedModelRulesInfo field(String fieldName, int index){
+    public static CreatedModelEIMInfo field(String fieldName, int index){
         columnName = fieldName;
         rowNum = index;
-        return new CreatedModelRulesInfo();
+        return new CreatedModelEIMInfo();
     }
 }

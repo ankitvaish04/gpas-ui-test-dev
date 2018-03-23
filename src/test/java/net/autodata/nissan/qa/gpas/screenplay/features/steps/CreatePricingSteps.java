@@ -2,14 +2,19 @@ package net.autodata.nissan.qa.gpas.screenplay.features.steps;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.autodata.nissan.qa.gpas.screenplay.customactions.CloseEditModelWindow;
+import net.autodata.nissan.qa.gpas.screenplay.customactions.CommitModelData;
 import net.autodata.nissan.qa.gpas.screenplay.customactions.SwitchToChildWindow;
 import net.autodata.nissan.qa.gpas.screenplay.model.CreateModelPricing;
 import net.autodata.nissan.qa.gpas.screenplay.model.CreateModelPricingInformation;
+import net.autodata.nissan.qa.gpas.screenplay.questions.CreatedModelPricingInfo;
 import net.autodata.nissan.qa.gpas.screenplay.ui.ApplicationHomePage;
 import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.serenitybdd.screenplay.actions.Click;
 import java.util.List;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static org.hamcrest.Matchers.is;
 
 public class CreatePricingSteps {
 
@@ -43,20 +48,23 @@ public class CreatePricingSteps {
     @Then("^s?he should see the created pricing for the model$")
     public void verify_model_pricing() throws Throwable {
 
-/*
+
         int index = 0;
         int j = createModelPricingInformationList.size();
 
         for (CreateModelPricingInformation el:createModelPricingInformationList){
             index = createModelPricingInformationList.indexOf(el)+ j;
             j = j-2;
-            theActorInTheSpotlight().should(seeThat(CreatedModelRulesInfo.field("Code", index), is(el.getOrderCode())));
-            theActorInTheSpotlight().should(seeThat(CreatedModelRulesInfo.field("O", index), is(el.getOperator())));
-            theActorInTheSpotlight().should(seeThat(CreatedModelRulesInfo.field("Operand", index), is(el.getOperand())));
+            theActorInTheSpotlight().should(seeThat(CreatedModelPricingInfo.field("Code", index), is(el.getOrderCode())));
+            theActorInTheSpotlight().should(seeThat(CreatedModelPricingInfo.field("Retail/MSRP", index), is(el.getPricing())));
+            theActorInTheSpotlight().should(seeThat(CreatedModelPricingInfo.field("PS", index), is(el.getPriceState())));
+            theActorInTheSpotlight().should(seeThat(CreatedModelPricingInfo.field("R/F", index), is(el.getRetailFleetStatus())));
+            theActorInTheSpotlight().should(seeThat(CreatedModelPricingInfo.field("EffDate", index), is(el.getEffectiveDate())));
+            theActorInTheSpotlight().should(seeThat(CreatedModelPricingInfo.field("NonEffDate", index), is(el.getNonEffectiveDate())));
         }
 
         theActorInTheSpotlight().attemptsTo(CommitModelData.commit());
         theActorInTheSpotlight().attemptsTo(CloseEditModelWindow.close());
-*/
+
     }
 }

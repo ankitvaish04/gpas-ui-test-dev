@@ -42,6 +42,18 @@ public class EditModelPage extends PageObject{
     public static final Target PRICE_TABLE_ROW1 = Target.the("'Price Table Row#1'")
             .locatedBy("//div[@role='tabpanel']/div[5]/div/div/table/tbody/tr[1]");
 
+    public static final Target EIM_TABLE = Target.the("'EIM Table'")
+            .locatedBy("//div[@role='tabpanel']/div[6]/div/div/table/tfoot/tr/td");
+
+    public static final Target EIM_TABLE_ROW1 = Target.the("'EIM Table Row#1'")
+            .locatedBy("//div[@role='tabpanel']/div[6]/div/div/table/tbody/tr[1]");
+
+    public static final Target CVC_TABLE = Target.the("'CVC Table'")
+            .locatedBy("//div[@role='tabpanel']/div[7]/div/div/table/tfoot/tr/td");
+
+    public static final Target CVC_TABLE_ROW1 = Target.the("'CVC Table Row#1'")
+            .locatedBy("//div[@role='tabpanel']/div[7]/div/div/table/tbody/tr[1]");
+
     public static final Target MAKE_HEADER_BUTTON = Target.the("'Make Header Button'")
             .locatedBy("//td[@class='row_edit']/table/tbody/tr/td/table/tbody/tr/td[6]/button");
 
@@ -86,6 +98,18 @@ public class EditModelPage extends PageObject{
 
     public static final Target EQUIPMENT_DESCRIPTIONS_ROW1 = Target.the("'Marketing Descriptions Table Row#1'")
             .locatedBy("(//table[@class='r-border'])[last()]/tbody/tr[2]/td/table/tbody/tr[1]");
+
+    public static final Target EIM_POSITION = Target.the("Position")
+            .locatedBy("//input[@class='gwt-TextBox rosetta-numeric']");
+
+    public static final Target EIM_CHARS = Target.the("Characters")
+            .locatedBy("(//input[@class='gwt-TextBox chrome-uppercase'])[1]");
+
+    public static final Target EIM_CONDITION = Target.the("Condition")
+            .locatedBy("(//input[@class='gwt-TextBox chrome-uppercase'])[2]");
+
+    public static final Target OPT_KINDS = Target.the("Option Kinds")
+            .locatedBy("//input[@class='gwt-TextBox']");
 
     public static final Target INPUT_BOX_TITLED(String targetElementName , String title)
     {
