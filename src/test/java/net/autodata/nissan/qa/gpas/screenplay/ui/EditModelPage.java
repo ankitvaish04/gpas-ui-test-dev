@@ -54,6 +54,12 @@ public class EditModelPage extends PageObject{
     public static final Target CVC_TABLE_ROW1 = Target.the("'CVC Table Row#1'")
             .locatedBy("//div[@role='tabpanel']/div[7]/div/div/table/tbody/tr[1]");
 
+    public static final Target DISCLAIMER_TABLE = Target.the("'Disclaimer Table'")
+            .locatedBy("//div[@role='tabpanel']/div[9]/div/div/table/tfoot/tr/td");
+
+    public static final Target DISCLAIMER_TABLE_ROW1 = Target.the("'Disclaimer Table Row#1'")
+            .locatedBy("//div[@role='tabpanel']/div[9]/div/div/table/tbody/tr[1]");
+
     public static final Target MAKE_HEADER_BUTTON = Target.the("'Make Header Button'")
             .locatedBy("//td[@class='row_edit']/table/tbody/tr/td/table/tbody/tr/td[6]/button");
 
@@ -110,6 +116,12 @@ public class EditModelPage extends PageObject{
 
     public static final Target OPT_KINDS = Target.the("Option Kinds")
             .locatedBy("//input[@class='gwt-TextBox']");
+
+    public static final Target DISCLAIMER_DESC_TABLE_ROW1 = Target.the("'Disclaimer Description Table Row#1'")
+            .locatedBy("(//table[@class='r-border'])[last()]/tbody/tr[2]/td/table/tbody/tr[1]");
+
+    public static final Target DISCLAIMER_DESCRIPTION_TEXT = Target.the("'Disclaimer Description Text'")
+            .locatedBy("(//textarea[@title='Disclaimer'])[1]");
 
     public static final Target INPUT_BOX_TITLED(String targetElementName , String title)
     {
