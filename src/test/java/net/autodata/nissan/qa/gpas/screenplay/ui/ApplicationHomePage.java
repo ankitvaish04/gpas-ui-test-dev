@@ -20,4 +20,23 @@ public class ApplicationHomePage extends PageObject {
                 .locatedBy("//button[text()='"+ title +"']");
     }
 
+    public static final Target TAB(String title)
+    {
+        return  Target.the(title)
+                .locatedBy("//div[@class='SelectorLabel' and text()='"+ title +"']");
+    }
+
+    public static final Target REMOVE_BUTTON(int i)
+    {
+        return  Target.the("Remove Button")
+                .locatedBy("(//div[@class='gwt-TabLayoutPanelContent'])[1]/table/tbody/tr[2]/td/table/tbody/tr[" + i + "]/td/button[text()='Remove']");
+    }
+
+    public static final Target EDIT_BUTTON(int i)
+    {
+        return  Target.the("Edit Button")
+                .locatedBy("(//div[@class='gwt-TabLayoutPanelContent'])[1]/table/tbody/tr[2]/td/table/tbody/tr[" + i + "]/td/button[text()='Edit']");
+    }
+
+
 }
