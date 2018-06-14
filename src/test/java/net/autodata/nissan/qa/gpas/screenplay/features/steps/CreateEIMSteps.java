@@ -13,7 +13,7 @@ import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.serenitybdd.screenplay.actions.Click;
 import java.util.List;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static net.autodata.nissan.qa.gpas.screenplay.features.steps.UserLoginSteps.actor;
 import static org.hamcrest.Matchers.is;
 
 public class CreateEIMSteps {
@@ -25,14 +25,14 @@ public class CreateEIMSteps {
 
         createModelEIMInformationList = createModelEIMInformationRequest;
         //System.out.println("SIZE:" + createModelEIMInformationList.size());
-        theActorInTheSpotlight().attemptsTo(
+        actor.attemptsTo(
                 Click.on(ApplicationHomePage.BUTTON_TARGET("Edit Button","Edit")),
                 SwitchToChildWindow.edit(),
                 Click.on(EditModelPage.TABS_TARGET("EIM Tab", "EIM"))
         );
         createModelEIMInformationList.forEach(
                 modelEIMInfo ->
-                        theActorInTheSpotlight().attemptsTo(
+                        actor.attemptsTo(
                                 CreateModelEIM.withInformation()
                                         .withPosition(modelEIMInfo.getPosition())
                                         .andCharacter(modelEIMInfo.getCharacter())
@@ -51,13 +51,13 @@ public class CreateEIMSteps {
         for (CreateModelEIMInformation el:createModelEIMInformationList){
             index = createModelEIMInformationList.indexOf(el)+ j;
             j = j-2;
-            theActorInTheSpotlight().should(seeThat(CreatedModelEIMInfo.field("Pos", index), is(el.getPosition())));
-            theActorInTheSpotlight().should(seeThat(CreatedModelEIMInfo.field("Characters", index), is(el.getCharacter())));
-            theActorInTheSpotlight().should(seeThat(CreatedModelEIMInfo.field("Condition", index), is(el.getCondition())));
+            actor.should(seeThat(CreatedModelEIMInfo.field("Pos", index), is(el.getPosition())));
+            actor.should(seeThat(CreatedModelEIMInfo.field("Characters", index), is(el.getCharacter())));
+            actor.should(seeThat(CreatedModelEIMInfo.field("Condition", index), is(el.getCondition())));
         }
 
-        theActorInTheSpotlight().attemptsTo(CommitModelData.commit());
-        theActorInTheSpotlight().attemptsTo(CloseEditModelWindow.close());
+        actor.attemptsTo(CommitModelData.commit());
+        actor.attemptsTo(CloseEditModelWindow.close());
 
     }
 }

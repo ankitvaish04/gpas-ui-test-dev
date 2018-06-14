@@ -10,7 +10,6 @@ import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 /**
@@ -31,7 +30,6 @@ public class RightClick implements Action {
     @Step("{0} right-clicks on #target")
     public <T extends Actor> void performAs(T actor) {
         WebElement element = target.resolveFor(actor);
-
         as(actor).contextClick(element).perform();
     }
 

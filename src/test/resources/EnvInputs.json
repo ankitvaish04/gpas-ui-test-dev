@@ -6,9 +6,9 @@
     "database": "Helios"
   },
   "cvsInput": {
-    "cvsHost": "192.167.99.100",
-    "cvsUser": "abad_centos",
-    "cvsIdentity": "C:\\apache-tomcat-6.0.53\\gpas\\Nissan.priv",
+    "cvsHost": "192.168.99.103",
+    "cvsUser": "avaish",
+    "cvsIdentity": "F:\\software\\apache-tomcat-6.0.53\\gpas\\pk.priv",
     "cvsRoot": "/home/cvsroot"
   }
 }

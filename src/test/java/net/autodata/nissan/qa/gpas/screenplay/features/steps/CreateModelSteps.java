@@ -1,5 +1,6 @@
 package net.autodata.nissan.qa.gpas.screenplay.features.steps;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -9,7 +10,7 @@ import net.autodata.nissan.qa.gpas.screenplay.model.SearchModel;
 import net.autodata.nissan.qa.gpas.screenplay.questions.ModelList;
 import java.util.List;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static net.autodata.nissan.qa.gpas.screenplay.features.steps.UserLoginSteps.actor;
 import static org.hamcrest.CoreMatchers.hasItem;
 
 
@@ -29,7 +30,7 @@ public class CreateModelSteps {
     public void create_new_model() throws Exception {
         modelInformationList.forEach(
                 modelInfo ->
-                        theActorInTheSpotlight().attemptsTo(
+                        actor.attemptsTo(
                                 CreateModel.withModelInformation()
                                         .onCountry(modelInfo.getCountry())
                                         .andYear(modelInfo.getModelYear())
@@ -46,7 +47,7 @@ public class CreateModelSteps {
         modelInformationList.forEach(
                 modelInfo ->
                 {
-                    theActorInTheSpotlight().attemptsTo(
+                    actor.attemptsTo(
                             SearchModel.searchModelYmmId()
                                     .onCountry(modelInfo.getCountry())
                                     .andYear(modelInfo.getModelYear())
@@ -56,7 +57,7 @@ public class CreateModelSteps {
                     );
 
                     created_model= modelInfo.getModelPermId() + " " + modelInfo.getModelName() + " {" + modelInfo.getModelPermId() + "}";
-                    theActorInTheSpotlight().should(
+                    actor.should(
                             seeThat(ModelList.displayed(modelInformationList), hasItem(created_model))
                     );
                 }

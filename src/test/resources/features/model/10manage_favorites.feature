@@ -9,13 +9,13 @@ Feature: manage My Favorites
   Scenario: Edit a favorite model
     When Abad wants to open a favorite model for editing with basic information
      | ymmId | country | modelYear | subDivision   | modelName             |
-     | 28315 | US      | 2017      | Infiniti Cars | Q70L 2017             |
+     | 29638 | CA      | 2017      | Infiniti Cars | Model from Serenity 1 |
 
     Then he should see the selected model open in edit model with correct information
 
   Scenario: Remove a favorite model
     When Abad wants to remove a favorite model with basic information
-     | ymmId | country | modelYear | subDivision   | modelName             |
-     | 30646 | CA      | 2017      | Infiniti Cars | Model from Serenity 2 |
+     | ymmId | country | modelYear | subDivision   | modelName       |
+     | 29641 | CA      | 2017      | Infiniti Cars | Model from Serenity 2 |
 
     Then he should see the selected model removed from the My Favorites list

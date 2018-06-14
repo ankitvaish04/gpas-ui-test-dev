@@ -13,7 +13,7 @@ import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.serenitybdd.screenplay.actions.Click;
 import java.util.List;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static net.autodata.nissan.qa.gpas.screenplay.features.steps.UserLoginSteps.actor;
 import static org.hamcrest.Matchers.is;
 
 public class CreateModelStyleSteps {
@@ -26,14 +26,14 @@ public class CreateModelStyleSteps {
     public void create_new_style(List<CreateModelStyleInformation> createModelStyleInformationRequest) throws Exception {
 
         createModelStyleInformationList = createModelStyleInformationRequest;
-        theActorInTheSpotlight().attemptsTo(
+        actor.attemptsTo(
                 Click.on(ApplicationHomePage.BUTTON_TARGET("Edit Button","Edit")),
                 SwitchToChildWindow.edit(),
                 Click.on(EditModelPage.TABS_TARGET("Style Tab", "Style"))
         );
         createModelStyleInformationList.forEach(
                 modelStyleInfo ->
-                        theActorInTheSpotlight().attemptsTo(
+                        actor.attemptsTo(
                                 CreateModelStyle.withModelInformation()
                                         .withStyleId(modelStyleInfo.getStyleID())
                                         .forStyleCode(modelStyleInfo.getStyleCode())
@@ -55,7 +55,7 @@ public class CreateModelStyleSteps {
         createMarketingDescriptionsInformationList = createMarketingDescriptionsInformationRequest;
         createMarketingDescriptionsInformationList.forEach(
                 marketingDescInfo ->
-                        theActorInTheSpotlight().attemptsTo(
+                        actor.attemptsTo(
                                 CreateModelStyleMarketingDescriptions.withInformation()
                                         .withDescriptionTypeId(marketingDescInfo.getDescriptionType())
                                         .andDescription(marketingDescInfo.getDescription())
@@ -72,7 +72,7 @@ public class CreateModelStyleSteps {
         System.out.println("Pricing Data : " + createPricingInformationList);
         createPricingInformationList.forEach(
                 pricingInfo ->
-                        theActorInTheSpotlight().attemptsTo(
+                        actor.attemptsTo(
                                 CreateModelStylePricing.withInformation()
                                         .withPriceState(pricingInfo.getPriceState())
                                         .andModelPricing(pricingInfo.getModelPricing())
@@ -82,7 +82,7 @@ public class CreateModelStyleSteps {
                         )
         );
 
-        theActorInTheSpotlight().attemptsTo(Click.on(EditModelPage.BUTTON_TARGET("Submit Button", "Submit")));
+        actor.attemptsTo(Click.on(EditModelPage.BUTTON_TARGET("Submit Button", "Submit")));
 
     }
 
@@ -91,18 +91,18 @@ public class CreateModelStyleSteps {
 
         createModelStyleInformationList.forEach(
                 modelStyleInfo -> {
-                    theActorInTheSpotlight().should(seeThat(CreatedModelStyleInfo.field("pID"), is(modelStyleInfo.getStyleID())));
-                    theActorInTheSpotlight().should(seeThat(CreatedModelStyleInfo.field("Code"), is(modelStyleInfo.getStyleCode())));
-                    theActorInTheSpotlight().should(seeThat(CreatedModelStyleInfo.field("Version"), is(modelStyleInfo.getVersionName())));
-                    theActorInTheSpotlight().should(seeThat(CreatedModelStyleInfo.field("Style Name"), is(modelStyleInfo.getStyleName())));
-                    theActorInTheSpotlight().should(seeThat(CreatedModelStyleInfo.field("Trim"), is(modelStyleInfo.getTrim())));
-                    theActorInTheSpotlight().should(seeThat(CreatedModelStyleInfo.field("Trim Plus"), is(modelStyleInfo.getTrimPlus())));
+                    actor.should(seeThat(CreatedModelStyleInfo.field("pID"), is(modelStyleInfo.getStyleID())));
+                    actor.should(seeThat(CreatedModelStyleInfo.field("Code"), is(modelStyleInfo.getStyleCode())));
+                    actor.should(seeThat(CreatedModelStyleInfo.field("Version"), is(modelStyleInfo.getVersionName())));
+                    actor.should(seeThat(CreatedModelStyleInfo.field("Style Name"), is(modelStyleInfo.getStyleName())));
+                    actor.should(seeThat(CreatedModelStyleInfo.field("Trim"), is(modelStyleInfo.getTrim())));
+                    actor.should(seeThat(CreatedModelStyleInfo.field("Trim Plus"), is(modelStyleInfo.getTrimPlus())));
 ;
                 }
         );
 
-        theActorInTheSpotlight().attemptsTo(CommitModelData.commit());
-        theActorInTheSpotlight().attemptsTo(CloseEditModelWindow.close());
+        actor.attemptsTo(CommitModelData.commit());
+        actor.attemptsTo(CloseEditModelWindow.close());
 
     }
 

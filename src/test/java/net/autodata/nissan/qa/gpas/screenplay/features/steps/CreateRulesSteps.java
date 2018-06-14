@@ -12,7 +12,7 @@ import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.serenitybdd.screenplay.actions.Click;
 import java.util.List;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static net.autodata.nissan.qa.gpas.screenplay.features.steps.UserLoginSteps.actor;
 import static org.hamcrest.Matchers.is;
 
 public class CreateRulesSteps {
@@ -23,14 +23,14 @@ public class CreateRulesSteps {
     public void create_new_rules(List<CreateModelRulesInformation> createModelRulesInformationRequest) throws Exception {
 
         createModelRulesInformationList = createModelRulesInformationRequest;
-        theActorInTheSpotlight().attemptsTo(
+        actor.attemptsTo(
                 Click.on(ApplicationHomePage.BUTTON_TARGET("Edit Button","Edit")),
                 SwitchToChildWindow.edit(),
                 Click.on(EditModelPage.TABS_TARGET("Rule Tab", "Rule"))
         );
         createModelRulesInformationList.forEach(
                 modelRulesInfo ->
-                        theActorInTheSpotlight().attemptsTo(
+                        actor.attemptsTo(
                                 CreateModelRules.withInformation()
                                         .withOrderCode(modelRulesInfo.getOrderCode())
                                         .andOperator(modelRulesInfo.getOperator())
@@ -49,12 +49,12 @@ public class CreateRulesSteps {
         for (CreateModelRulesInformation el:createModelRulesInformationList){
             index = createModelRulesInformationList.indexOf(el)+ j;
             j = j-2;
-            theActorInTheSpotlight().should(seeThat(CreatedModelRulesInfo.field("Code", index), is(el.getOrderCode())));
-            theActorInTheSpotlight().should(seeThat(CreatedModelRulesInfo.field("O", index), is(el.getOperator())));
-            theActorInTheSpotlight().should(seeThat(CreatedModelRulesInfo.field("Operand", index), is(el.getOperand())));
+            actor.should(seeThat(CreatedModelRulesInfo.field("Code", index), is(el.getOrderCode())));
+            actor.should(seeThat(CreatedModelRulesInfo.field("O", index), is(el.getOperator())));
+            actor.should(seeThat(CreatedModelRulesInfo.field("Operand", index), is(el.getOperand())));
         }
 
-        theActorInTheSpotlight().attemptsTo(CommitModelData.commit());
-        theActorInTheSpotlight().attemptsTo(CloseEditModelWindow.close());
+        actor.attemptsTo(CommitModelData.commit());
+        actor.attemptsTo(CloseEditModelWindow.close());
     }
 }

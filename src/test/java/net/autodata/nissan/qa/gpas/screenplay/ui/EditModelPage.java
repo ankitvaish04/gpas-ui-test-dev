@@ -13,7 +13,7 @@ public class EditModelPage extends PageObject{
             .locatedBy("//select[@class='gwt-ListBox']");
 
     public static final Target MODEL_NAME_HEADER = Target.the("Model Name")
-            .locatedBy("//tr[@class='rTool-row row_selected']/td[6]");
+            .locatedBy("//table[@class='gwt-TabPanel']/tbody/tr/td/div/div/div/div/table/tbody/tr/td[6]/div");
     
     public static final Target MODEL_NAME = Target.the("'Model Name' input box")
             .locatedBy("(//input[@class='gwt-TextBox'])[last()]");

@@ -4,8 +4,14 @@ package net.autodata.nissan.qa.gpas.screenplay.utilities;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.autodata.nissan.qa.gpas.screenplay.data.Styles;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +21,11 @@ import java.util.List;
 public class ReadJson {
 
     public static Styles.Descriptions d = null;
+
+    public static ReadJson getInstance() {
+        return new ReadJson();
+    }
+
     public List<Styles> initStylesData(String fileName) throws IOException {
         List<Styles> stylesList = new ArrayList<Styles>();
         ObjectMapper mapper = new ObjectMapper();
@@ -67,6 +78,25 @@ public class ReadJson {
 
 
         return stylesList;
+    }
+
+    public JSONObject envInputFile(String envInputFile) throws IOException, ParseException {
+        //Get file from resources folder
+        JSONObject jsonObject=null;
+        try {
+            ClassLoader classLoader = getClass().getClassLoader();
+            URL url=classLoader.getResource(envInputFile);
+            FileReader file = new FileReader(classLoader.getResource(envInputFile).getPath());
+            JSONParser envInputs = new JSONParser();
+            jsonObject=(JSONObject) envInputs.parse(file);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return jsonObject;
+
     }
 
 }

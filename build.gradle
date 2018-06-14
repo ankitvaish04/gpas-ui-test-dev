@@ -9,10 +9,9 @@ repositories {
 
 buildscript {
     ext {
-        drivers = ["firefox", "chrome", "phantomJs"]
-
-        serenity_version = '1.8.21'
-        serenity_cucumber_version = '1.6.10'
+        //drivers = ["firefox", "chrome", "phantomJs"]
+        serenity_version = '1.9.5'
+        serenity_cucumber_version = '1.9.4'
         serenity_jira_version = '1.8.0'
         chromeDriverVersion = '2.35'
         phantomJsVersion = '2.1.1'
@@ -24,7 +23,7 @@ buildscript {
     }
 
     dependencies {
-        classpath('net.serenity-bdd:serenity-gradle-plugin:' + serenity_version)
+        classpath("net.serenity-bdd:serenity-gradle-plugin:$serenity_version")
     }
 }
 
@@ -32,8 +31,12 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'groovy'
 apply plugin: 'net.serenity-bdd.aggregator'
-apply from: "gradle/idea.gradle"
-apply from: "gradle/osSpecificDownloads.gradle"
+//apply from: "gradle/idea.gradle"
+//apply from: "gradle/osSpecificDownloads.gradle"
+
+group 'com.serenity'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
 
 idea {
     module {
@@ -50,7 +53,10 @@ dependencies {
 
     testCompile 'net.serenity-bdd:serenity-core:' + serenity_version
     testCompile 'net.serenity-bdd:serenity-junit:' + serenity_version
-    testCompile 'net.serenity-bdd:serenity-rest-assured:' + serenity_version
+    testCompile "net.serenity-bdd:serenity-rest-assured:$serenity_version"
+    testCompile "net.serenity-bdd:serenity-junit:$serenity_version"
+    testCompile 'org.seleniumhq.selenium:selenium-api:3.9.0'
+
     testCompile 'net.serenity-bdd:serenity-screenplay:' + serenity_version
     testCompile 'net.serenity-bdd:serenity-screenplay-webdriver:' + serenity_version
 
@@ -76,39 +82,23 @@ dependencies {
 
     // Dependency to read and traverse through the json file
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.4'
-}
 
-drivers.each { driver ->
-    task "${driver}Test"(type: Test) {
-        reports {
-            html.destination = reporting.file("$name/tests")
-            junitXml.destination = file("$buildDir/test-results/$name")
-        }
-
-        outputs.upToDateWhen { false }  // Always run tests
-
-        maxParallelForks = (Runtime.runtime.availableProcessors() / 2) + 1
-        finalizedBy(aggregate)
-    }
+    compile group: 'de.openkeyword', name: 'autoit', version: '0.1.13'
 }
 
 test {
-    dependsOn drivers.collect { tasks["${it}Test"] }
-    enabled = false
+    systemProperty 'tags', System.properties['tags']
+
+    // Ensure reports from a previous run are cleared up
+    dependsOn clearReports
+    // Ensure integration tests are always run. Will never report as 'UP-TO-DATE'
+    outputs.upToDateWhen {false}
+    // ensure Gradle ignores failing tests so that the Serenity Aggregation step executes
+    ignoreFailures = true
+    // Ensure Serenity aggregation is run after, and if, integration tests are run
+    finalizedBy aggregate
 }
 
-chromeTest {
-    dependsOn unzipChromeDriver
-
-    def chromedriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromedriver.exe" : "chromedriver"
-    systemProperty "webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromedriverFilename).absolutePath
-}
-
-phantomJsTest {
-    dependsOn unzipPhantomJs
-
-    def phantomJsFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "phantomjs.exe" : "bin/phantomjs"
-    systemProperty "phantomjs.binary.path", new File(unzipPhantomJs.outputs.files.singleFile, phantomJsFilename).absolutePath
-}
+defaultTasks 'test'
 
 gradle.startParameter.continueOnFailure = true

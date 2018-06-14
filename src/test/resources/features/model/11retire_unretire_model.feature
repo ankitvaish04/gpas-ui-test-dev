@@ -9,17 +9,16 @@ Feature: Retire/Unretire a model
   Scenario: retire a model with basic model information
     When Abad selects a model to retire with basic information
     | country | modelYear | subdivision   | modelName             | modelPermId |
-    | CA      | 2017      | Infiniti Cars | Imported Model 1      | 18          |
+    | CA      | 2017      | Infiniti Cars | Model from Serenity 2 | 19          |
 
     And he retires the selected model
 
     Then he should see the model as retired
 
-  @Pending
   Scenario: unretire a model with basic model information
       When Abad selects a model to unretire with basic information
       | country | modelYear | subdivision   | modelName             | modelPermId |
-      | CA      | 2017      | Infiniti Cars | Imported Model 1      | 18          |
+      | CA      | 2017      | Infiniti Cars | Model from Serenity 2 | 19          |
 
       And he unretires the selected model
 

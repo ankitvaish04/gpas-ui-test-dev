@@ -1,6 +1,5 @@
 package net.autodata.nissan.qa.gpas.screenplay.customactions;
 
-import net.autodata.nissan.qa.gpas.screenplay.utilities.GlobalVars;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -10,17 +9,18 @@ import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
  */
 public class RetrieveYmmId implements Interaction{
 
+    private String ymmId="";
     @Override
     public <T extends Actor> void performAs(T actor) {
 
         String currentUrl = BrowseTheWeb.as(actor).getDriver().getCurrentUrl().trim();
-        GlobalVars.ymmId = currentUrl.substring(currentUrl.lastIndexOf("=") + 1).trim();
-        System.out.println("Current URL: " + currentUrl);
-        System.out.println("YMMID      : " + GlobalVars.ymmId);
+        ymmId = currentUrl.substring(currentUrl.lastIndexOf("=") + 1).trim();
+        //System.out.println("Current URL: " + currentUrl);
+        //System.out.println("YMMID      : " + GlobalVars.ymmId);
     }
 
     public static RetrieveYmmId fromUrl(){
-        return  new RetrieveYmmId();
+        return new RetrieveYmmId();
     }
 
 }

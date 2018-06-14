@@ -14,7 +14,7 @@ import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.serenitybdd.screenplay.actions.Click;
 import java.util.List;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static net.autodata.nissan.qa.gpas.screenplay.features.steps.UserLoginSteps.actor;
 import static org.hamcrest.Matchers.is;
 
 public class CreateDisclaimerSteps {
@@ -26,14 +26,14 @@ public class CreateDisclaimerSteps {
 
         createModelDisclaimerInformationList = createModelDisclaimerInformationRequest;
         //System.out.println("SIZE:" + createModelEIMInformationList.size());
-        theActorInTheSpotlight().attemptsTo(
+        actor.attemptsTo(
                 Click.on(ApplicationHomePage.BUTTON_TARGET("Edit Button","Edit")),
                 SwitchToChildWindow.edit(),
                 Click.on(EditModelPage.TABS_TARGET("Disc Tab", "Disc"))
         );
         createModelDisclaimerInformationList.forEach(
                 modelDisclaimerInfo ->
-                        theActorInTheSpotlight().attemptsTo(
+                        actor.attemptsTo(
                                 CreateModelDisclaimer.withInformation()
                                         .withRefCode(modelDisclaimerInfo.getRefCode())
                                         .andShortName(modelDisclaimerInfo.getShortName())
@@ -52,13 +52,13 @@ public class CreateDisclaimerSteps {
         for (CreateModelDisclaimerInformation el:createModelDisclaimerInformationList){
             index = createModelDisclaimerInformationList.indexOf(el)+ j;
             j = j-2;
-            theActorInTheSpotlight().should(seeThat(CreatedModelDisclaimerInfo.field("Code", index), is(el.getRefCode())));
-            theActorInTheSpotlight().should(seeThat(CreatedModelDisclaimerInfo.field("Short Name", index), is(el.getShortName())));
-            theActorInTheSpotlight().should(seeThat(CreatedModelDisclaimerInfo.field("Disclaimer", index), is(el.getDescription())));
+            actor.should(seeThat(CreatedModelDisclaimerInfo.field("Code", index), is(el.getRefCode())));
+            actor.should(seeThat(CreatedModelDisclaimerInfo.field("Short Name", index), is(el.getShortName())));
+            actor.should(seeThat(CreatedModelDisclaimerInfo.field("Disclaimer", index), is(el.getDescription())));
         }
 
-        theActorInTheSpotlight().attemptsTo(CommitModelData.commit());
-        theActorInTheSpotlight().attemptsTo(CloseEditModelWindow.close());
+        actor.attemptsTo(CommitModelData.commit());
+        actor.attemptsTo(CloseEditModelWindow.close());
 
     }
 }

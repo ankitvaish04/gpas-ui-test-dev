@@ -5,7 +5,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.SelectFromOptions;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static net.autodata.nissan.qa.gpas.screenplay.features.steps.UserLoginSteps.actor;
 
 /**
  * Created by ankit.vaish on 07-03-2018.
@@ -19,7 +19,7 @@ public class SelectCurrencies implements Interaction{
         if (currencyList!=null&&currencyList.length>0) {
             for (String currency : currencyList) {
                 if (!currency.equalsIgnoreCase("")) {
-                    theActorInTheSpotlight().attemptsTo(
+                    actor.attemptsTo(
                             SelectFromOptions.byValue(currency).from(EditModelPage.DIALOGBOX_AVAIABLE_LIST_TARGET("Select & Order Currencies")),
                             Click.on(EditModelPage.BUTTON_TARGET("> Button", ">"))
                     );

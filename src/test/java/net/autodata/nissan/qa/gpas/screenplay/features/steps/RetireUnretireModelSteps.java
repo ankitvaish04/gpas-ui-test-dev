@@ -10,9 +10,8 @@ import net.autodata.nissan.qa.gpas.screenplay.ui.ApplicationHomePage;
 import net.serenitybdd.screenplay.actions.Click;
 import java.util.List;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.CoreMatchers.hasItem;
-
+import static net.autodata.nissan.qa.gpas.screenplay.features.steps.UserLoginSteps.actor;
 
 public class RetireUnretireModelSteps {
 
@@ -26,7 +25,7 @@ public class RetireUnretireModelSteps {
         modelInformationList.forEach(
                 modelInfo ->
                 {
-                    theActorInTheSpotlight().attemptsTo(
+                    actor.attemptsTo(
                             SelectDetails.withModelInformation()
                                     .onCountry(modelInfo.getCountry())
                                     .andYear(modelInfo.getModelYear())
@@ -41,11 +40,12 @@ public class RetireUnretireModelSteps {
     @And("^s?he retires the selected model")
     public void retire_model() throws Exception {
 
-        theActorInTheSpotlight().attemptsTo(
+        actor.attemptsTo(
                 Click.on(ApplicationHomePage.BUTTON_TARGET("Retire Model Button","Retire Model")),
                 ClickOkOn.retireUnretireModelAlert()
         );
-
+        //Thread.sleep(5000);
+        //actor.attemptsTo(ClickOkOn.retireUnretireModelAlert());
     }
 
     @Then("^s?he should see the model as retired$")
@@ -53,7 +53,7 @@ public class RetireUnretireModelSteps {
         modelInformationList.forEach(
                 modelInfo ->
                 {
-                    theActorInTheSpotlight().attemptsTo(
+                    actor.attemptsTo(
                             SearchModel.searchModelYmmId()
                                     .onCountry(modelInfo.getCountry())
                                     .andYear(modelInfo.getModelYear())
@@ -62,8 +62,9 @@ public class RetireUnretireModelSteps {
                                     .searchModel()
                     );
 
-                    retired_model = modelInfo.getModelPermId() + " " + modelInfo.getModelName() + " {" + modelInfo.getModelPermId() + "}  (Retired!)";
-                    theActorInTheSpotlight().should(
+                    retired_model = modelInfo.getModelPermId() + " " + modelInfo.getModelName() + " {" + modelInfo.getModelPermId() + "} (Retired!)";
+                    System.out.println("Retired -- >" + retired_model);
+                    actor.should(
                             seeThat(ModelList.displayed(modelInformationList), hasItem(retired_model))
                     );
                 }
@@ -77,7 +78,7 @@ public class RetireUnretireModelSteps {
         modelInformationList.forEach(
                 modelInfo ->
                 {
-                    theActorInTheSpotlight().attemptsTo(
+                    actor.attemptsTo(
                             SelectDetails.withModelInformation()
                                     .onCountry(modelInfo.getCountry())
                                     .andYear(modelInfo.getModelYear())
@@ -92,7 +93,7 @@ public class RetireUnretireModelSteps {
     @And("^s?he unretires the selected model")
     public void unretire_model() throws Exception {
 
-        theActorInTheSpotlight().attemptsTo(
+        actor.attemptsTo(
                 Click.on(ApplicationHomePage.BUTTON_TARGET("Unretire Model Button","Unretire Model")),
                 ClickOkOn.retireUnretireModelAlert()
         );
@@ -104,7 +105,7 @@ public class RetireUnretireModelSteps {
         modelInformationList.forEach(
                 modelInfo ->
                 {
-                    theActorInTheSpotlight().attemptsTo(
+                    actor.attemptsTo(
                             SearchModel.searchModelYmmId()
                                     .onCountry(modelInfo.getCountry())
                                     .andYear(modelInfo.getModelYear())
@@ -114,7 +115,8 @@ public class RetireUnretireModelSteps {
                     );
 
                     unretired_model = modelInfo.getModelPermId() + " " + modelInfo.getModelName() + " {" + modelInfo.getModelPermId() + "}";
-                    theActorInTheSpotlight().should(
+                    System.out.println("UnRetired -- >" + unretired_model);
+                    actor.should(
                             seeThat(ModelList.displayed(modelInformationList), hasItem(unretired_model))
                     );
                 }

@@ -1,14 +1,33 @@
 package net.autodata.nissan.qa.gpas.screenplay.utilities;
 
 import com.jcraft.jsch.*;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.*;
 
-class GetCSVRecords {
+public class GetCSVRecords {
 
-    public static List<String> checkoutCsvFiles(String ymmId, String cvsHost, String cvsUser, String cvsIdentity,
-                                                String cvsRoot) throws JSchException, IOException {
+    private static String cvsHost = "";
+    private static String cvsUser = "";
+    private static String cvsIdentity = "";
+    private static String cvsRoot = "";
+
+    public static List<String> checkoutCsvFiles() throws JSchException, IOException, ParseException {
+
+
+        // Read envInputs json file
+        JSONObject envInputFile = ReadJson.getInstance().envInputFile("EnvInputs.json");
+        JSONObject sqlinput = (JSONObject) envInputFile.get("cvsInput");
+
+
+        cvsHost = sqlinput.get("cvsHost").toString();
+        cvsUser = sqlinput.get("cvsUser").toString();
+        cvsIdentity = sqlinput.get("cvsIdentity").toString();
+        cvsRoot = sqlinput.get("cvsRoot").toString();
+
 
         List<String> csvFileList = new ArrayList<String>();
 
@@ -38,7 +57,7 @@ class GetCSVRecords {
 
             // Set and run the required checkout command for the ymmid
             channelExec.setCommand(
-                    "/bin/cvs -d" + cvsRoot + " co -d" + ymmId + " rosetta_edit/" + ymmId + "\nls ~/" + ymmId);
+                    "/bin/cvs -d" + cvsRoot + " co -d" + GlobalVars.ymmId + " rosetta_edit/" + GlobalVars.ymmId + "\nls ~/" + GlobalVars.ymmId);
             channelExec.setErrStream(System.err);
             channelExec.connect();
 
@@ -64,8 +83,7 @@ class GetCSVRecords {
         return csvFileList;
     }
 
-    static Map<String, List<Map<String, String>>> readCsvFileLines(String ymmId, String cvsHost, String cvsUser,
-                                                                   String cvsIdentity, List<String> cvsFilesToRead) throws JSchException {
+    public static Map<String, List<Map<String, String>>> readCsvFileLines(List<String> cvsFilesToRead) throws JSchException {
 
         Map<String, List<Map<String, String>>> gpasCsvData = new HashMap<String, List<Map<String, String>>>();
 
@@ -96,12 +114,12 @@ class GetCSVRecords {
                 // Get the filename without extension to create the map
                 List<String> csvFileLines = new ArrayList<String>();
                 String fileNameForMap = fileName.toString().substring(0, fileName.toString().indexOf('.'));
-                System.out.println("fileformap:" + fileNameForMap);
+                //System.out.println("fileformap:" + fileNameForMap);
 
                 // Get the file from user's home directory within the respective ymmId
                 InputStream remoteFile = null;
                 try {
-                    remoteFile = sftpChannel.get("/home/" + cvsUser + "/" + ymmId + "/" + fileName);
+                    remoteFile = sftpChannel.get("/home/" + cvsUser + "/" + GlobalVars.ymmId + "/" + fileName);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -181,8 +199,8 @@ class GetCSVRecords {
 
     // main method for testing
 
-   /* public static void main(String ar[]) throws IOException, JSchException {
-        List<String> cvsFileToRead = checkoutCsvFiles("27629", "192.167.99.100", "abad_centos",
+    public static void main(String ar[]) throws IOException, JSchException, ParseException {
+      /*  List<String> cvsFileToRead = checkoutCsvFiles("27629", "192.167.99.100", "abad_centos",
                 "C:\\apache-tomcat-6.0.53\\gpas\\Nissan.priv", "/home/cvsroot");
 
         Map<String, List<Map<String, String>>> gpasCsvData = readCsvFileLines("27629", "192.167.99.100", "abad_centos",
@@ -192,4 +210,16 @@ class GetCSVRecords {
         System.out.println(gpasCsvData.get("equiplngdescription").get(1).get("sequence_num"));
     }*/
 
+        Map<String, List<Map<String, String>>> gpasCvsDataInMap = null;
+        List<String> modelValues = new ArrayList<String>();
+//        System.out.println(gpasCsvData);
+//        System.out.println("YMMID:  "+gpasCsvData.get("model").get(0).get("locale"));
+        gpasCvsDataInMap = GetCSVRecords.readCsvFileLines(GetCSVRecords.checkoutCsvFiles());
+        System.out.println("ModelList : " + gpasCvsDataInMap.get("model").get(0));
+        gpasCvsDataInMap.get("model").get(0).forEach((key, value) -> {
+            System.out.println("Key : " + key + " Value : " + value);
+            modelValues.add(value);
+                });
+        System.out.println("Values : " + modelValues);
+    }
 }

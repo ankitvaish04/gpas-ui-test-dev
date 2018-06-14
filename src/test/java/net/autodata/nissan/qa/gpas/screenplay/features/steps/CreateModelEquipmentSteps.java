@@ -13,7 +13,7 @@ import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.serenitybdd.screenplay.actions.Click;
 import java.util.List;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static net.autodata.nissan.qa.gpas.screenplay.features.steps.UserLoginSteps.actor;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 
@@ -26,14 +26,14 @@ public class CreateModelEquipmentSteps {
     public void create_new_equipment(List<CreateModelEquipmentInformation> createModelEquipmentInformationRequest) throws Exception {
 
         createModelEquipmentInformationList = createModelEquipmentInformationRequest;
-        theActorInTheSpotlight().attemptsTo(
+        actor.attemptsTo(
                 Click.on(ApplicationHomePage.BUTTON_TARGET("Edit Button","Edit")),
                 SwitchToChildWindow.edit(),
                 Click.on(EditModelPage.TABS_TARGET("Equip Tab", "Equip"))
         );
         createModelEquipmentInformationList.forEach(
                 modelEqipInfo ->
-                        theActorInTheSpotlight().attemptsTo(
+                        actor.attemptsTo(
                                 CreateModelEquipment.withInformation()
                                         .withHeader(modelEqipInfo.getIsHeader())
                                         .andSpec(modelEqipInfo.getIsSpec())
@@ -54,7 +54,7 @@ public class CreateModelEquipmentSteps {
         createEquipDescriptionsInformationList = createEquipDescriptionsInformationRequest;
         createEquipDescriptionsInformationList.forEach(
                 equipDescInfo ->
-                        theActorInTheSpotlight().attemptsTo(
+                        actor.attemptsTo(
                                 CreateModelEquipDescriptions.withInformation()
                                         .withDescriptionType(equipDescInfo.getDescriptionType())
                                         .andDescription(equipDescInfo.getDescription())
@@ -62,7 +62,7 @@ public class CreateModelEquipmentSteps {
                         )
         );
 
-        theActorInTheSpotlight().attemptsTo(Click.on(EditModelPage.BUTTON_TARGET("Submit Button", "Submit")));
+        actor.attemptsTo(Click.on(EditModelPage.BUTTON_TARGET("Submit Button", "Submit")));
     }
 
     @Then("^s?he should see the created equipments for the model$")
@@ -72,9 +72,9 @@ public class CreateModelEquipmentSteps {
         {
             createModelEquipmentInformationList.forEach(
                     modelEquipInfo -> {
-                        theActorInTheSpotlight().should(seeThat(CreatedModelEquipmentInfo.field("Code"), is(modelEquipInfo.getOrderCode())));
-                        theActorInTheSpotlight().should(seeThat(CreatedModelEquipmentInfo.field("Spec"), is(modelEquipInfo.getIsSpec())));
-                        theActorInTheSpotlight().should(seeThat(CreatedModelEquipmentInfo.field("Flg"), is("HDR")));
+                        actor.should(seeThat(CreatedModelEquipmentInfo.field("Code"), is(modelEquipInfo.getOrderCode())));
+                        actor.should(seeThat(CreatedModelEquipmentInfo.field("Spec"), is(modelEquipInfo.getIsSpec())));
+                        actor.should(seeThat(CreatedModelEquipmentInfo.field("Flg"), is("HDR")));
                     }
             );
         }
@@ -82,17 +82,17 @@ public class CreateModelEquipmentSteps {
         {
             createModelEquipmentInformationList.forEach(
                     modelEquipInfo -> {
-                        theActorInTheSpotlight().should(seeThat(CreatedModelEquipmentInfo.field("Code"), is(modelEquipInfo.getOrderCode())));
-                        theActorInTheSpotlight().should(seeThat(CreatedModelEquipmentInfo.field("OpK"), is(modelEquipInfo.getOptionKind())));
-                        theActorInTheSpotlight().should(seeThat(CreatedModelEquipmentInfo.field("UTF"), is(modelEquipInfo.getUtf())));
-                        theActorInTheSpotlight().should(seeThat(CreatedModelEquipmentInfo.field("Spec"), is(modelEquipInfo.getIsSpec())));
-                        theActorInTheSpotlight().should(seeThat(CreatedModelEquipmentInfo.field("MP"), is(modelEquipInfo.getIsMostPopular())));
-                        theActorInTheSpotlight().should(seeThat(CreatedModelEquipmentInfo.field("Flg"), containsString(modelEquipInfo.getFlags())));
+                        actor.should(seeThat(CreatedModelEquipmentInfo.field("Code"), is(modelEquipInfo.getOrderCode())));
+                        actor.should(seeThat(CreatedModelEquipmentInfo.field("OpK"), is(modelEquipInfo.getOptionKind())));
+                        actor.should(seeThat(CreatedModelEquipmentInfo.field("UTF"), is(modelEquipInfo.getUtf())));
+                        actor.should(seeThat(CreatedModelEquipmentInfo.field("Spec"), is(modelEquipInfo.getIsSpec())));
+                        actor.should(seeThat(CreatedModelEquipmentInfo.field("MP"), is(modelEquipInfo.getIsMostPopular())));
+                        actor.should(seeThat(CreatedModelEquipmentInfo.field("Flg"), containsString(modelEquipInfo.getFlags())));
                     }
             );
         }
 
-        theActorInTheSpotlight().attemptsTo(CommitModelData.commit());
-        theActorInTheSpotlight().attemptsTo(CloseEditModelWindow.close());
+        actor.attemptsTo(CommitModelData.commit());
+        actor.attemptsTo(CloseEditModelWindow.close());
     }
 }

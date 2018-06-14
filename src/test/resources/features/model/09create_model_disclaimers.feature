@@ -3,7 +3,7 @@ Feature: create disclaimers for a model
 
   Background:
     Given Abad is logged in as gpasqa
-    And he selects the model on CA for 2017 over Infiniti Cars with model Id as 12
+    And he selects the model on CA for 2017 over Infiniti Cars with model Id as 25
 
   Scenario: create disclaimers for a model
     When Abad wants to create disclaimers with basic information

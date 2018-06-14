@@ -5,14 +5,18 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.SelectFromOptions;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static net.autodata.nissan.qa.gpas.screenplay.features.steps.UserLoginSteps.actor;
+import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
 
 public class CommitModelData implements Interaction{
 
     @Override
     public <T extends Actor> void performAs(T actor) {
 
-        theActorInTheSpotlight().attemptsTo(
+        actor.attemptsTo(
                 Click.on(EditModelPage.MODELACTION_LISTBOX),
                 SelectFromOptions.byVisibleText("Commit").from(EditModelPage.MODELACTION_LISTBOX)
         );
@@ -22,9 +26,7 @@ public class CommitModelData implements Interaction{
             e.printStackTrace();
         }
 
-        theActorInTheSpotlight().attemptsTo(ClickOkOn.commitAlerts());
-        theActorInTheSpotlight().attemptsTo(ClickOkOn.commitAlerts());
-        theActorInTheSpotlight().attemptsTo(ClickOkOn.commitAlerts());
+        actor.attemptsTo(ClickOkOn.commitAlerts());
 
     }
 

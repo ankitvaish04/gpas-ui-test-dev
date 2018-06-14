@@ -13,7 +13,7 @@ import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.serenitybdd.screenplay.actions.Click;
 import java.util.List;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static net.autodata.nissan.qa.gpas.screenplay.features.steps.UserLoginSteps.actor;
 import static org.hamcrest.Matchers.is;
 
 public class CheckCVCOptKindsSteps {
@@ -25,14 +25,14 @@ public class CheckCVCOptKindsSteps {
 
         checkCVCOptKindsInformationList = checkCVCOptKindsInformationRequest;
         //System.out.println("LIST SIZE:" + checkCVCOptKindsInformationList.size());
-        theActorInTheSpotlight().attemptsTo(
+        actor.attemptsTo(
                 Click.on(ApplicationHomePage.BUTTON_TARGET("Edit Button","Edit")),
                 SwitchToChildWindow.edit(),
                 Click.on(EditModelPage.TABS_TARGET("CVC Tab", "CVC"))
         );
         checkCVCOptKindsInformationList.forEach(
                 modelCVCInfo ->
-                        theActorInTheSpotlight().attemptsTo(
+                        actor.attemptsTo(
                                 CheckCVCOptKinds.withInformation()
                                         .withOptKinds(modelCVCInfo.getOptkinds())
                                         .getCVCOptKinds()
@@ -49,11 +49,11 @@ public class CheckCVCOptKindsSteps {
         for (CheckCVCOptKindsInformation el:checkCVCOptKindsInformationList){
             index = checkCVCOptKindsInformationList.indexOf(el)+ j;
             j = j-2;
-            theActorInTheSpotlight().should(seeThat(GeneratedOptKindsInfo.field("Option Kinds", index), is(el.getOptkinds())));
+            actor.should(seeThat(GeneratedOptKindsInfo.field("Option Kinds", index), is(el.getOptkinds())));
         }
 
-        theActorInTheSpotlight().attemptsTo(CommitModelData.commit());
-        theActorInTheSpotlight().attemptsTo(CloseEditModelWindow.close());
+        actor.attemptsTo(CommitModelData.commit());
+        actor.attemptsTo(CloseEditModelWindow.close());
 
     }
 }

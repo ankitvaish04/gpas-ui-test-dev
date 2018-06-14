@@ -14,7 +14,6 @@ public class SwitchToParentWindow implements Interaction{
     @Override
     public <T extends Actor> void performAs(T actor) {
 
-
         getDriver().switchTo().window(GlobalVars.PARENT_WINDOW);
     }
 

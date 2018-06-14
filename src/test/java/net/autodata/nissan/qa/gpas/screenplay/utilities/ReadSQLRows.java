@@ -22,7 +22,7 @@ public class ReadSQLRows {
         ResultSet rs = null;
 
         // Read envInputs json file
-        JSONObject envInputFile=envInputFile("EnvInputs.json");
+        JSONObject envInputFile=ReadJson.getInstance().envInputFile("EnvInputs.json");
         JSONObject sqlinput = (JSONObject) envInputFile.get("sqlInput");
 
 
@@ -93,27 +93,6 @@ public class ReadSQLRows {
 
         return rowData;
     }
-
-
-    private JSONObject envInputFile(String envInputFile) throws IOException, ParseException {
-        //Get file from resources folder
-        JSONObject jsonObject=null;
-        try {
-            ClassLoader classLoader = getClass().getClassLoader();
-            URL url=classLoader.getResource(envInputFile);
-            FileReader file = new FileReader(classLoader.getResource(envInputFile).getPath());
-            JSONParser envInputs = new JSONParser();
-             jsonObject=(JSONObject) envInputs.parse(file);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-        return jsonObject;
-
-    }
-
 
 
     public static void main(String[] ar) throws SQLException, IOException, ParseException {

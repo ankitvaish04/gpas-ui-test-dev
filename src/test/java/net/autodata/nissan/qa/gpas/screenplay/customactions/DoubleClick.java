@@ -10,7 +10,6 @@ import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 /**
@@ -31,8 +30,8 @@ public class DoubleClick implements Action {
     @Step("{0} double-clicks on #target")
     public <T extends Actor> void performAs(T actor) {
         WebElement element = target.resolveFor(actor);
-
         as(actor).doubleClick(element).perform();
+
     }
 
     private Actions as(Actor actor) {

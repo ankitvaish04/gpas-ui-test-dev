@@ -4,10 +4,16 @@ import net.autodata.nissan.qa.gpas.screenplay.customactions.*;
 import net.autodata.nissan.qa.gpas.screenplay.ui.ApplicationHomePage;
 import net.autodata.nissan.qa.gpas.screenplay.ui.EditModelPage;
 import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.actions.Hit;
 import net.thucydides.core.annotations.Step;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+
+import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
 
 
 public class UpdateModelWithRequiredValues implements Task {
@@ -46,6 +52,7 @@ public class UpdateModelWithRequiredValues implements Task {
     @Override
     @Step("{0} looks to update a model with Effective Date as #effectiveDate, Languages #languages, Currencies #currencies and Price Types #priceTypes and translate model information")
     public <T extends Actor> void performAs(T actor) {
+
         actor.attemptsTo(
 
                     Click.on(ApplicationHomePage.BUTTON_TARGET("Edit Button","Edit")),
@@ -71,5 +78,6 @@ public class UpdateModelWithRequiredValues implements Task {
                     Click.on(EditModelPage.BUTTON_TARGET("Submit Button","Submit"))
 
                 );
+
     }
 }
